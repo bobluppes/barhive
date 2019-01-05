@@ -2,6 +2,7 @@ new Vue({
     el: '#app',
     data: {
         tickets: [],
+        polling: null,
     },
 
     template: `<div>
@@ -25,10 +26,27 @@ new Vue({
                     </template>    
                 </div>`,
 
+    methods: {
+      pollData() {
+          this.polling = setInterval(() => {
+              const url = "/api/kitchen/tickets";
+              this.$http.get(url).then(response => {
+                  this.tickets = response.body;
+              });
+          }, 3000)
+      }
+    },
+
+    beforeDestroy () {
+        clearInterval(this.polling)
+    },
+
     mounted() {
         const url = "/api/kitchen/tickets";
         this.$http.get(url).then(response => {
             this.tickets = response.body;
         });
+
+        this.pollData();
     }
 })
