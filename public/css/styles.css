@@ -55,3 +55,7 @@
 .no-decoration {
     text-decoration: none !important;
 }
+
+.kitchen-ticket {
+    margin: 20px;
+}

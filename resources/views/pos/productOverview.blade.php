@@ -18,8 +18,14 @@
                 <div class="pos-category text-center">
                     <h1>{{ $oProduct->sName }}</h1>
 
-                    <p>{{ $oProduct->sDescription }}</p>
-                    <button class="btn btn-primary">Order</button>
+                    <p>{{ $oProduct->sDescription  }}</p>
+
+                    {!! Form::open(array('url' => 'pos/product/' . $oProduct->id)) !!}
+                    {!! Form::token() !!}
+
+                    {!! Form::submit('Order', array('class' => 'btn btn-primary')) !!}
+
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

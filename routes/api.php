@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/kitchen/tickets', 'api\v1\KitchenController@getTickets');
+Route::post('/kitchen/{id}/delete', 'api\v1\KitchenController@deleteTicket');

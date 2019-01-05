@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Product;
+use App\KitchenTicket;
 
 class KitchenController extends Controller
 {
 
     public function getTickets()
     {
-        $oProducts = Product::all();
+        $oTickets = KitchenTicket::all();
 
-        return $oProducts;
+        return $oTickets;
+    }
+
+    public function deleteTicket($id)
+    {
+        $oTicket = KitchenTicket::where('id', $id)->delete();
+
+        return redirect('/kitchen');
     }
 }
