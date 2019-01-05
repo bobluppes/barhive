@@ -17,9 +17,7 @@ new Vue({
                             <div class="card-footer">
                                 <h5>{{ new Date(ticket.created_at).getHours() }} : {{ new Date(ticket.created_at).getMinutes() }}</h5>
 
-                                <form :action="'/api/kitchen/' + ticket.id + '/delete'" method="post">
-                                    <button type="submit" class="btn btn-primary">Done</button>
-                                </form>
+                                <button class="btn btn-primary" @click="deleteTicket(ticket.id)">Done</button>
                             </div>
                         </div>
                         
@@ -33,8 +31,13 @@ new Vue({
               this.$http.get(url).then(response => {
                   this.tickets = response.body;
               });
-          }, 3000)
-      }
+          }, 1000)
+      },
+
+        deleteTicket(id) {
+            const url = "/api/kitchen/" + id + "/delete";
+            this.$http.post(url);
+        }
     },
 
     beforeDestroy () {

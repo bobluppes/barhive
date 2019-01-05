@@ -20,7 +20,5 @@ class KitchenController extends Controller
     public function deleteTicket($id)
     {
         $oTicket = KitchenTicket::where('id', $id)->delete();
-
-        return redirect('/kitchen');
     }
 }
