@@ -1,0 +1,57 @@
+.category {
+    border: solid;
+    border-color: grey;
+    border-width: 1px;
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.category-button {
+    margin-top: 20px;
+}
+
+.category-specification {
+    border: solid;
+    border-color: grey;
+    border-width: 1px;
+    margin-top: -1px;
+    padding: 10px;
+    background-color: #a1cbef;
+}
+
+.product {
+    border: solid;
+    border-color: grey;
+    border-width: 1px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.pos-header-exit {
+    background-color: orangered;
+    color: white;
+    padding: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.pos-header-back {
+    background-color: darkorange;
+    color: white;
+    padding: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.pos-category {
+    background-color: lightblue;
+    color: black;
+    padding: 60px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.no-decoration {
+    text-decoration: none !important;
+}
