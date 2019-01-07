@@ -7,5 +7,5 @@
 
     <script src="{{ asset('js/vue.min.js') }}"></script>
     <script src="{{ asset('js/vue-resource.min.js') }}"></script>
-    <script src="{{ asset('js/KitchenOrders.js') }}"></script>
+    <script src="{{ asset('js/BarOrders.js') }}"></script>
 @endsection

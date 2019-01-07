@@ -25,6 +25,8 @@
                     <a href="/inventory"><button class="btn btn-primary">Inventory Management</button></a>
                     <a href="/pos"><button class="btn btn-warning">POS Mode</button></a>
                     <a href="/kitchen"><button class="btn btn-success">Kitchen Orders</button></a>
+                    <a href="/bar"><button class="btn btn-success">Bar Orders</button></a>
+                    <a href="/settings/table"><button class="btn btn-secondary">Table Settings</button></a>
                 </div>
             </div>
         </div>

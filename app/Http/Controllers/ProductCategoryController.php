@@ -11,10 +11,12 @@ class ProductCategoryController extends Controller
     {
         $validatedData = $oRequest->validate([
             'name' => 'required|string|max:255',
+            'makeOrder'=> 'required|string|max:255',
         ]);
 
         $oCategory = new ProductCategory;
         $oCategory->sName = $validatedData['name'];
+        $oCategory->sMakeOrder = $validatedData['makeOrder'];
         $oCategory->save();
 
         return redirect('/inventory');

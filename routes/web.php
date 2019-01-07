@@ -26,7 +26,7 @@ Route::get('/inventory/category/{id}/product', 'HomeController@product');
 Route::get('/pos', 'HomeController@pos');
 Route::get('/pos/{id}', 'HomeController@posCategory');
 Route::get('/pos/product/{id}', 'HomeController@posProduct');
-Route::post('/pos/product/{id}', 'OrderController@order');
+Route::post('/pos/product', 'OrderController@order');
 
 Route::post('/inventory/category', 'ProductCategoryController@add');
 Route::get('/inventory/category/{id}/delete', 'ProductCategoryController@delete');
@@ -35,3 +35,6 @@ Route::post('/inventory/product', 'ProductController@add');
 Route::get('/inventory/product/{id}/delete', 'ProductController@delete');
 
 Route::get('/kitchen', 'HomeController@kitchen');
+Route::get('/bar', 'HomeController@bar');
+
+Route::get('/settings/table', 'HomeController@tableSettings');

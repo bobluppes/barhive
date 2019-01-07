@@ -74,4 +74,14 @@ class HomeController extends Controller
     {
         return view('kitchen.overview');
     }
+
+    public function bar()
+    {
+        return view('bar.overview');
+    }
+
+    public function tableSettings()
+    {
+        return view('settings.table');
+    }
 }

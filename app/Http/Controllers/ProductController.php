@@ -24,6 +24,8 @@ class ProductController extends Controller
         $oProduct->sDescription = $validatedData['description'];
         $oProduct->fPrice = $validatedData['price'];
         $oProduct->iCategoryId = $validatedData['catId'];
+        $oProduct->bActive = (bool) $oRequest->active;
+        $oProduct->bOrderComment = (bool) $oRequest->orderComment;
         $oProduct->save();
 
         $oInventory = new Inventory();

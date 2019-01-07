@@ -20,8 +20,16 @@
 
                     <p>{{ $oProduct->sDescription  }}</p>
 
-                    {!! Form::open(array('url' => 'pos/product/' . $oProduct->id)) !!}
+                    {!! Form::open(array('url' => 'pos/product')) !!}
                     {!! Form::token() !!}
+
+                    {!! Form::hidden('id', $oProduct->id) !!}
+
+                    @if ($oProduct->bOrderComment)
+                        {!! Form::textArea('orderComment', '', array('class' => 'form-control')) !!}
+                    @else
+                        {!! Form::hidden('orderComment', '', array('class' => 'form-control')) !!}
+                    @endif
 
                     {!! Form::submit('Order', array('class' => 'btn btn-primary')) !!}
 
