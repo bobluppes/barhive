@@ -38,3 +38,5 @@ Route::get('/kitchen', 'HomeController@kitchen');
 Route::get('/bar', 'HomeController@bar');
 
 Route::get('/settings/table', 'HomeController@tableSettings');
+Route::get('/settings/table/layout', 'KonvaTableController@getLayout');
+Route::post('/settings/table/layout', 'KonvaTableController@saveLayout');

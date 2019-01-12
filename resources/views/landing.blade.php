@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>BarHive Demo</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -68,7 +68,7 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/dashboard') }}">My Barstat</a>
+                <a href="{{ url('/dashboard') }}">BarHive Controlpanel</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
 
@@ -81,7 +81,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Barstat POS
+            BarHive POS
         </div>
 
         <div class="links">
