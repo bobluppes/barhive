@@ -1,3 +1,11 @@
+body, html {
+    height: 100%;
+}
+
+.navbar-barhive {
+    background-color: #222A32;
+}
+
 .category {
     border: solid;
     border-color: grey;

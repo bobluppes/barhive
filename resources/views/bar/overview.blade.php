@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
+
+@section('title')
+    Bar Tickets
+@endsection
 
 @section('content')
     <div id="app" class="container">

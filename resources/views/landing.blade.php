@@ -85,7 +85,7 @@
         </div>
 
         <div class="links">
-            <a href="">About</a>
+            <a href="https:///www.barhive.nl">About</a>
         </div>
     </div>
 </div>
