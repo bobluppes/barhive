@@ -28,7 +28,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark navbar-laravel navbar-barhive">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     BarStat
@@ -80,27 +80,8 @@
         </nav>
     </div>
 
-    <div class="container-fluid h-100 p-0">
-        <div class="row h-100">
-            <div class="col-md-2 h-100">
-                <div class="sidebar h-100">
-                    <ul class="sidebar-item-list">
-                        <a href="/dashboard" class="no-decoration"><li class="sidebar-item {{ Request::is('dashboard*') ? 'active' : '' }}">Dashboard</li></a>
-                        <a href="/inventory" class="no-decoration"><li class="sidebar-item {{ Request::is('inventory*') ? 'active' : '' }}">Inventory Management</li></a>
-                        <a href="/tickets" class="no-decoration"><li class="sidebar-item {{ Request::is('tickets*') ? 'active' : '' }}">Ticket Monitor</li></a>
-                        <a href="/settings" class="no-decoration"><li class="sidebar-item {{ Request::is('settings*') ? 'active' : '' }}">Settings</li></a>
-                        <a href="/pos" class="no-decoration"><li class="sidebar-item sidebar-item-last {{ Request::is('pos*') ? 'active' : '' }}">POS Mode</li></a>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-10">
-                <div class="container">
-                    @include('flash::message')
-                </div>
-
-                @yield('content')
-            </div>
-        </div>
+    <div class="mt-5">
+        @yield('content')
     </div>
 
 </body>
