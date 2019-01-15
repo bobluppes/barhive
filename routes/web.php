@@ -21,7 +21,9 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::get('/inventory', 'HomeController@inventory');
 Route::get('/inventory/category', 'HomeController@category');
-Route::get('/inventory/category/{id}/product', 'HomeController@product');
+Route::get('/inventory/category/{id}/product', 'HomeController@addProduct');
+Route::get('/inventory/product/{id}/edit', 'HomeController@editProduct');
+Route::post('/inventory/product/{id}/edit', 'ProductController@update');
 
 Route::get('/pos', 'HomeController@pos');
 Route::get('/pos/{id}', 'HomeController@posCategory');

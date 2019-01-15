@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
+use App\Inventory;
 
 class HomeController extends Controller
 {
@@ -41,12 +42,21 @@ class HomeController extends Controller
         return view('inventory.addCategory');
     }
 
-    public function product($id)
+    public function addProduct($id)
     {
 
         $oCategory = ProductCategory::where('id', $id)->first();
 
         return view('inventory.addProduct', ['oCategory' => $oCategory]);
+    }
+
+    public function editProduct($id)
+    {
+        $oProduct = Product::where('id', $id)->first();
+        $oCategory = ProductCategory::where('id', $oProduct->iCategoryId)->first();
+        $oInventory = Inventory::where('iProductId', $id)->first();
+
+        return view('inventory.editProduct', ['oCategory' => $oCategory, 'oProduct' => $oProduct, 'oInventory' => $oInventory]);
     }
 
     public function pos()

@@ -35,7 +35,8 @@
                                         {{ $oProduct->getMinimumInventory() }}
                                     </div>
                                     <div class="col-md-6 text-right">
-                                        <a href="/inventory/product/{{$oProduct->id}}/delete"><i class="fa fa-minus-circle"></i></a>
+                                        <a href="/inventory/product/{{$oProduct->id}}/edit"><i class="fa fa-edit text-primary"></i></a>
+                                        <a href="/inventory/product/{{$oProduct->id}}/delete"><i class="fa fa-minus-circle text-danger"></i></a>
                                     </div>
                                 </div>
                             </div>
