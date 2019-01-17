@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Inventory;
 use App\Product;
 use App\ProductCategory;
-use App\KitchenTicket;
-use App\BarTicket;
+use App\Ticket;
 
 class OrderController extends Controller
 {
@@ -29,13 +28,10 @@ class OrderController extends Controller
         $oCategory = ProductCategory::where('id', $oProduct->iCategoryId)->first();
 
         if ($oCategory->sMakeOrder != 'none') {
-            if ($oCategory->sMakeOrder == 'Kitchen') {
-                $oTicket = new KitchenTicket();
-            } elseif ($oCategory->sMakeOrder == 'Bar') {
-                $oTicket = new BarTicket();
-            }
+            $oTicket = new Ticket();
             $oTicket->sName = $oProduct->sName;
             $oTicket->sComment = $orderComment;
+            $oTicket->sDepartment = $oCategory->sMakeOrder;
             $oTicket->save();
         }
 

@@ -36,8 +36,9 @@ Route::get('/inventory/category/{id}/delete', 'ProductCategoryController@delete'
 Route::post('/inventory/product', 'ProductController@add');
 Route::get('/inventory/product/{id}/delete', 'ProductController@delete');
 
-Route::get('/kitchen', 'HomeController@kitchen');
-Route::get('/bar', 'HomeController@bar');
+Route::get('tickets/kitchen', 'HomeController@kitchen');
+Route::get('tickets/bar', 'HomeController@bar');
+Route::get('/tickets', 'HomeController@tickets');
 
 Route::get('/settings/table', 'HomeController@tableSettings');
 Route::get('/settings/table/layout', 'KonvaTableController@getLayout');

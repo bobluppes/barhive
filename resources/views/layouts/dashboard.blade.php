@@ -122,13 +122,13 @@
                         <a href="#"><i class="fa fa-ticket fa-fw"></i> Ticket Monitoring<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/kitchen">Kitchen Tickets</a>
+                                <a href="/tickets/kitchen">Kitchen Tickets</a>
                             </li>
                             <li>
-                                <a href="/bar">Bar Tickets</a>
+                                <a href="/tickets/bar">Bar Tickets</a>
                             </li>
                             <li>
-                                <a href="notifications.html">All Tickets</a>
+                                <a href="/tickets">All Tickets</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

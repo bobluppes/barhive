@@ -20,7 +20,7 @@
                             <i class="fa fa-list alt fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">{{ \App\KitchenTicket::all()->count() + \App\BarTicket::all()->count() }}</div>
+                            <div class="huge">{{ \App\Ticket::all()->count() }}</div>
                             <div>Open tickets</div>
                         </div>
                     </div>

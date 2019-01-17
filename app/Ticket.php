@@ -4,10 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class KitchenTicket extends Model
+class Ticket extends Model
 {
     protected $fillable = [
-        'iProductId',
-        'sComment',
+        'sName', 'sComment', 'sDepartment',
     ];
 }

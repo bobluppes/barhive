@@ -25,14 +25,14 @@ new Vue({
                 </div>`,
 
     methods: {
-      pollData() {
-          this.polling = setInterval(() => {
-              const url = "/api/tickets/kitchen";
-              this.$http.get(url).then(response => {
-                  this.tickets = response.body;
-              });
-          }, 1000)
-      },
+        pollData() {
+            this.polling = setInterval(() => {
+                const url = "/api/tickets/all";
+                this.$http.get(url).then(response => {
+                    this.tickets = response.body;
+                });
+            }, 1000)
+        },
 
         deleteTicket(id) {
             const url = "/api/tickets/" + id + "/delete";
@@ -45,7 +45,7 @@ new Vue({
     },
 
     mounted() {
-        const url = "/api/tickets/kitchen";
+        const url = "/api/tickets/all";
         this.$http.get(url).then(response => {
             this.tickets = response.body;
         });

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKitchenTicketsTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateKitchenTicketsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kitchen_tickets', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->string('sName');
-            $table->longText('sComment');
+            $table->text('sComment');
+            $table->string('sDepartment');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateKitchenTicketsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kitchen_tickets');
+        Schema::dropIfExists('tickets');
     }
 }

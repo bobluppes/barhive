@@ -80,14 +80,19 @@ class HomeController extends Controller
         return view('pos.productOverview', ['oProduct' => $oProduct]);
     }
 
+    public function tickets()
+    {
+        return view('tickets.all');
+    }
+
     public function kitchen()
     {
-        return view('kitchen.overview');
+        return view('tickets.kitchen');
     }
 
     public function bar()
     {
-        return view('bar.overview');
+        return view('tickets.bar');
     }
 
     public function tableSettings()

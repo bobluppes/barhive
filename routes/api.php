@@ -17,8 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/kitchen/tickets', 'api\v1\KitchenController@getTickets');
-Route::post('/kitchen/{id}/delete', 'api\v1\KitchenController@deleteTicket');
+Route::get('/tickets/kitchen', 'api\v1\TicketController@getKitchenTickets');
+Route::post('/tickets/{id}/delete', 'api\v1\TicketController@deleteTicket');
 
-Route::get('/bar/tickets', 'api\v1\BarController@getTickets');
-Route::post('/bar/{id}/delete', 'api\v1\BarController@deleteTicket');
+Route::get('/tickets/bar', 'api\v1\TicketController@getBarTickets');
+Route::post('/tickets/{id}/delete', 'api\v1\TicketController@deleteTicket');
+
+Route::get('/tickets/all', 'api\v1\TicketController@getTickets');
+Route::post('/tickets/{id}/delete', 'api\v1\TicketController@deleteTicket');

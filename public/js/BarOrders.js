@@ -27,7 +27,7 @@ new Vue({
     methods: {
         pollData() {
             this.polling = setInterval(() => {
-                const url = "/api/bar/tickets";
+                const url = "/api/tickets/bar";
                 this.$http.get(url).then(response => {
                     this.tickets = response.body;
                 });
@@ -35,7 +35,7 @@ new Vue({
         },
 
         deleteTicket(id) {
-            const url = "/api/bar/" + id + "/delete";
+            const url = "/api/tickets/" + id + "/delete";
             this.$http.post(url);
         }
     },
@@ -45,7 +45,7 @@ new Vue({
     },
 
     mounted() {
-        const url = "/api/bar/tickets";
+        const url = "/api/tickets/bar";
         this.$http.get(url).then(response => {
             this.tickets = response.body;
         });
