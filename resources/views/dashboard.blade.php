@@ -86,8 +86,8 @@
                             <i class="fa fa-dropbox fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>Products that require stocking</div>
+                            <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                            <div>Worth in sales made last month</div>
                         </div>
                     </div>
                 </div>

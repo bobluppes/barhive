@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sales;
 use Illuminate\Http\Request;
 use App\Inventory;
 use App\Product;
@@ -34,6 +35,11 @@ class OrderController extends Controller
             $oTicket->sDepartment = $oCategory->sMakeOrder;
             $oTicket->save();
         }
+
+        $oSale = new Sales();
+        $oSale->iProductId = $oProduct->id;
+        $oSale->fPrice = $oProduct->fPrice;
+        $oSale->save();
 
         flash('Ordered ' . $oProduct->sName)->success();
 
