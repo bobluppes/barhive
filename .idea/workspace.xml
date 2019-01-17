@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67f81ccf-70a1-44e9-a298-e805683e3d63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/api/v1/TicketController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/AllOrders.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/tickets/all.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/Page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/BarTicket.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/api/v1/BarController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/api/v1/KitchenController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/KitchenTicket.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_01_05_132906_create_kitchen_tickets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_01_05_204850_create_bar_tickets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/BarOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/BarOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/KitchenOrders.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/KitchenOrders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/bar/overview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tickets/bar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/kitchen/overview.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tickets/kitchen.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,28 +96,29 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="js" value="5" />
-          <entry key="php" value="50" />
+          <entry key="js" value="9" />
+          <entry key="php" value="51" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Blade" value="22" />
-          <entry key="JavaScript" value="5" />
+          <entry key="Blade" value="23" />
+          <entry key="JavaScript" value="9" />
           <entry key="PHP" value="28" />
           <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="80" />
-          <entry key="php" value="2492" />
+          <entry key="js" value="1010" />
+          <entry key="php" value="2571" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Blade" value="765" />
-          <entry key="JavaScript" value="80" />
+          <entry key="Blade" value="842" />
+          <entry key="HTML" value="2" />
+          <entry key="JavaScript" value="1010" />
           <entry key="PHP" value="1727" />
         </counts>
       </usages-collector>
@@ -147,65 +131,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
+            <state relative-caret-position="195">
+              <caret line="102" column="143" selection-start-line="102" selection-start-column="143" selection-end-line="102" selection-end-column="143" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/tickets/bar.blade.php">
+        <entry file="file://$PROJECT_DIR$/public/js/Page.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/BarOrders.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/KitchenOrders.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="47" selection-start-line="31" selection-start-column="47" selection-end-line="31" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/tickets/all.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/api/v1/TicketController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+            <state relative-caret-position="204">
+              <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -231,7 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_01_05_204850_create_bar_tickets_table.php" />
         <option value="$PROJECT_DIR$/app/BarTicket.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/api/v1/BarController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_07_213224_create_products_table.php" />
@@ -280,8 +218,9 @@
         <option value="$PROJECT_DIR$/public/js/KitchenOrders.js" />
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/api/v1/TicketController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/tickets/all.blade.php" />
+        <option value="$PROJECT_DIR$/public/js/Page.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" />
       </list>
     </option>
   </component>
@@ -564,12 +503,12 @@
       <workItem from="1547419056340" duration="4000" />
       <workItem from="1547485607320" duration="6860000" />
       <workItem from="1547563411050" duration="10458000" />
-      <workItem from="1547756139527" duration="2395000" />
+      <workItem from="1547756139527" duration="3883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93181000" />
+    <option name="totallyTimeSpent" value="94669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
@@ -604,16 +543,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/morris-data.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/fonts/fontawesome-webfont.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/overview_original.blade.php" />
-    <entry file="file://$PROJECT_DIR$/public/js/sb-admin-2.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/overview.blade.php" />
     <entry file="file://$PROJECT_DIR$/public/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -932,17 +861,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/tickets/all.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="127" column="42" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
+        <state relative-caret-position="238">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/tickets/all.blade.php">
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/sb-admin-2.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/metisMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/Page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="85" selection-start-line="12" selection-start-column="85" selection-end-line="12" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="102" column="143" selection-start-line="102" selection-start-column="143" selection-end-line="102" selection-end-column="143" />
         </state>
       </provider>
     </entry>

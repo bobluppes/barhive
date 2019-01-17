@@ -100,7 +100,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="sidebar-search">
                         <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
+                            <input id="sidebarSearch" type="text" class="form-control" placeholder="Search..." onchange="oPage.searchSidebar();">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -187,6 +187,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+<script src="{{ asset('js/Page.js') }}"></script>
 
 </body>
 
