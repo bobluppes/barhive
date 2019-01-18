@@ -17,6 +17,9 @@
     <!-- MetisMenu CSS -->
     <link href="{{ asset('css/metisMenu.css') }}" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="{{ 'css/dataTables.bootstrap.css' }}">
+
     <!-- Custom CSS -->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
@@ -183,11 +186,13 @@
 <!-- Morris Charts JavaScript -->
 <script src="{{ asset('js/raphael.js') }}"></script>
 <script src="{{ asset('js/morris.js') }}"></script>
-<script src="{{ asset('js/morris-data.js') }}"></script>
+{{--<script src="{{ asset('js/morris-data.js') }}"></script>--}}
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 <script src="{{ asset('js/Page.js') }}"></script>
+
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 @yield('scripts')
 
