@@ -43,3 +43,8 @@ Route::get('/tickets', 'HomeController@tickets');
 Route::get('/settings/table', 'HomeController@tableSettings');
 Route::get('/settings/table/layout', 'KonvaTableController@getLayout');
 Route::post('/settings/table/layout', 'KonvaTableController@saveLayout');
+
+Route::get('/settings/management', 'HomeController@managementSettings');
+Route::get('/settings/pos', 'HomeController@posSettings');
+Route::get('/settings/user', 'Homecontroller@userSettings');
+Route::get('/user', 'HomeController@profile');

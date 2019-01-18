@@ -77,9 +77,9 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li class="text-center"><strong>{{ Auth::user()->name }}</strong></li>
                     <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="/user"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i> Preferences</a>
+                    <li><a href="/settings/user"><i class="fa fa-gear fa-fw"></i> Preferences</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -137,13 +137,13 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Settings<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">POS Settings</a>
+                                <a href="/settings/pos">POS Settings</a>
                             </li>
                             <li>
-                                <a href="#">Management Settings</a>
+                                <a href="/settings/management">Management Settings</a>
                             </li>
                             <li>
-                                <a href="#">Table Layout</a>
+                                <a href="/settings/table">Table Layout</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

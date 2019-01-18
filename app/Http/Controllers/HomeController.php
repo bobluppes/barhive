@@ -99,4 +99,24 @@ class HomeController extends Controller
     {
         return view('settings.table');
     }
+
+    public function managementSettings()
+    {
+
+    }
+
+    public function posSettings()
+    {
+
+    }
+
+    public function userSettings()
+    {
+
+    }
+
+    public function profile()
+    {
+
+    }
 }
