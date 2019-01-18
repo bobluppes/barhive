@@ -35,34 +35,43 @@ class SalesController
 
     public function getMonth()
     {
-        $oSalesToday = Sales::all()->filter(function($date) {
-            return $date->created_at->isToday();
+        $oSalesMonth = Sales::all()->filter(function($date) {
+            return $date->created_at->format('m') == date('m');
         });
 
         $data = [];
         $j = 0;
-        for ($i = 8; $i < 24; $i++) {
-            $oSalesThisHour = $oSalesToday->filter(function($date) use($i){
-                return $date->created_at->format('H') == $i;
+        for ($i = 1; $i < (cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y')) + 1); $i++) {
+            $oSalesThisDay = $oSalesMonth->filter(function($date) use ($i) {
+                return $date->created_at->format('d') == $i;
             });
             $data[$j] = new \stdClass();
-            $data[$j]->revenue = $oSalesThisHour->sum('fPrice');
-            $data[$j]->time = (string) $i;
+            $data[$j]->revenue = $oSalesThisDay->sum('fPrice');
+            $data[$j]->time = date('Y-m') . '-' . $i;
             $j++;
         }
 
         return json_encode($data);
+
+        return json_encode($data);
     }
 
-    public function getAll()
+    public function getYear()
     {
-        $oSales = Sales::all();
+        $oSalesYear = Sales::all()->filter(function($date) {
+            return $date->created_at->format('Y') == date('Y');
+        });
 
         $data = [];
-        foreach ($oSales as $i=>$oSale) {
-            $data[$i] = new \stdClass();
-            $data[$i]->revenue = $oSale->fPrice;
-            $data[$i]->time = $oSale->created_at->format('M:d:Y:H:i:s');
+        $j = 0;
+        for ($i = 1; $i < 13; $i++) {
+            $oSalesThisMonth = $oSalesYear->filter(function($date) use ($i) {
+                return $date->created_at->format('m') == $i;
+            });
+            $data[$j] = new \stdClass();
+            $data[$j]->revenue = $oSalesThisMonth->sum('fPrice');
+            $data[$j]->time = date('Y') . '-' . $i . '-00';
+            $j++;
         }
 
         return json_encode($data);

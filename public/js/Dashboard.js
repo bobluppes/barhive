@@ -24,6 +24,8 @@ var areaVue = new Vue({
             e.preventDefault();
             clearInterval(this.polling);
             $("#morris-area-chart").empty();
+            $('#morris-area-chart-action')[0].innerHTML = 'Today <span class="caret"></span>';
+            $('#morris-area-chart-title')[0].innerHTML = 'Todays sales';
             this.sales = null;
             this.url = '/api/sales/today';
 
@@ -47,17 +49,39 @@ var areaVue = new Vue({
         },
         timeframeMonth(e) {
             e.preventDefault();
-            this.sales = [];
-            salesGraph.setData(this.sales);
-            salesGraph.redraw();
+            clearInterval(this.polling);
+            $("#morris-area-chart").empty();
+            $('#morris-area-chart-action')[0].innerHTML = 'This month <span class="caret"></span>';
+            $('#morris-area-chart-title')[0].innerHTML = 'This months sales';
+            this.sales = null;
             this.url = '/api/sales/month';
+
+            this.$http.get(this.url).then(response => {
+                salesToday = response.body;
+                this.sales = salesToday;
+
+                salesGraph = new Morris.Area({
+                    element: 'morris-area-chart',
+                    data: this.sales,
+                    xkey: 'time',
+                    ykeys: ['revenue'],
+                    labels: ['revenue'],
+                    pointSize: 2,
+                    hideHover: 'auto',
+                    resize: true
+                });
+
+                this.pollData();
+            });
         },
-        timeframeAlltime(e) {
+        timeframeYear(e) {
             e.preventDefault();
             clearInterval(this.polling);
             $("#morris-area-chart").empty();
+            $('#morris-area-chart-action')[0].innerHTML = 'This year <span class="caret"></span>';
+            $('#morris-area-chart-title')[0].innerHTML = 'This years sales';
             this.sales = null;
-            this.url = '/api/sales/all';
+            this.url = '/api/sales/year';
 
             this.$http.get(this.url).then(response => {
                 salesToday = response.body;

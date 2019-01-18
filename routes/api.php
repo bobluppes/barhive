@@ -28,4 +28,4 @@ Route::post('/tickets/{id}/delete', 'api\v1\TicketController@deleteTicket');
 
 Route::get('/sales/today', 'api\v1\SalesController@getToday');
 Route::get('/sales/month', 'api\v1\SalesController@getMonth');
-Route::get('/sales/all', 'api\v1\SalesController@getAll');
+Route::get('/sales/year', 'api\v1\SalesController@getYear');

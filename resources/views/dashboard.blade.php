@@ -108,11 +108,11 @@
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i> Todays sales
+                    <i class="fa fa-bar-chart-o fa-fw"></i> <span id="morris-area-chart-title">Todays sales</span>
                     <div class="pull-right">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                Select timeframe
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" id="morris-area-chart-action">
+                                Today
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu pull-right" role="menu">
@@ -120,7 +120,7 @@
                                 </li>
                                 <li><a href="#" onclick="areaVue.timeframeMonth(event);">This month</a>
                                 </li>
-                                <li><a href="#" onclick="areaVue.timeframeAlltime(event);">All time</a>
+                                <li><a href="#" onclick="areaVue.timeframeYear(event);">This year</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="#"><strong>See more</strong></a>
