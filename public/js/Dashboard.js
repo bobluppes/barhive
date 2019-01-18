@@ -26,10 +26,28 @@ var areaVue = new Vue({
 
         timeframeDay(e) {
             e.preventDefault();
-            this.sales = [];
-            salesGraph.setData(this.sales);
-            salesGraph.redraw();
+            clearInterval(this.polling);
+            $("#morris-area-chart").empty();
+            this.sales = null;
             this.url = '/api/sales/today';
+
+            this.$http.get(this.url).then(response => {
+                salesToday = response.body;
+                this.sales = salesToday;
+
+                salesGraph = new Morris.Area({
+                    element: 'morris-area-chart',
+                    data: this.sales,
+                    xkey: 'time',
+                    ykeys: ['revenue'],
+                    labels: ['revenue'],
+                    pointSize: 2,
+                    hideHover: 'auto',
+                    resize: true
+                });
+
+                this.pollData();
+            });
         },
         timeframeMonth(e) {
             e.preventDefault();
@@ -41,11 +59,27 @@ var areaVue = new Vue({
         timeframeAlltime(e) {
             e.preventDefault();
             clearInterval(this.polling);
+            $("#morris-area-chart").empty();
             this.sales = null;
-            salesGraph.setData(this.sales);
-            salesGraph.redraw();
             this.url = '/api/sales/all';
-            this.pollData();
+
+            this.$http.get(this.url).then(response => {
+                salesToday = response.body;
+                this.sales = salesToday;
+
+                salesGraph = new Morris.Area({
+                    element: 'morris-area-chart',
+                    data: this.sales,
+                    xkey: 'time',
+                    ykeys: ['revenue'],
+                    labels: ['revenue'],
+                    pointSize: 2,
+                    hideHover: 'auto',
+                    resize: true
+                });
+
+                this.pollData();
+            });
         }
     },
 
@@ -57,19 +91,19 @@ var areaVue = new Vue({
         this.$http.get(this.url).then(response => {
             salesToday = response.body;
             this.sales = salesToday;
-        });
 
-        salesGraph = new Morris.Area({
-            element: 'morris-area-chart',
-            data: this.sales,
-            xkey: 'time',
-            ykeys: ['revenue'],
-            labels: ['revenue'],
-            pointSize: 2,
-            hideHover: 'auto',
-            resize: true
-        });
+            salesGraph = new Morris.Area({
+                element: 'morris-area-chart',
+                data: this.sales,
+                xkey: 'time',
+                ykeys: ['revenue'],
+                labels: ['revenue'],
+                pointSize: 2,
+                hideHover: 'auto',
+                resize: true
+            });
 
-        this.pollData();
+            this.pollData();
+        });
     }
 })
