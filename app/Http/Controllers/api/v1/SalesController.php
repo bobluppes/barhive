@@ -26,7 +26,7 @@ class SalesController
             });
             $data[$j] = new \stdClass();
             $data[$j]->revenue = $oSalesThisHour->sum('fPrice');
-            $data[$j]->time = (string) $i;
+            $data[$j]->time = date('Y-m-d') . ' ' . $i . ':00:00';
             $j++;
         }
 

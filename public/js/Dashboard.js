@@ -15,13 +15,9 @@ var areaVue = new Vue({
                     salesToday = response.body;
                     this.sales = salesToday;
                 });
-                console.log(this.sales);
-
                 salesGraph.setData(this.sales);
                 salesGraph.redraw();
-
-                console.log(this.url);
-            }, 10000)
+            }, 5000)
         },
 
         timeframeDay(e) {
