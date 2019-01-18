@@ -25,3 +25,7 @@ Route::post('/tickets/{id}/delete', 'api\v1\TicketController@deleteTicket');
 
 Route::get('/tickets/all', 'api\v1\TicketController@getTickets');
 Route::post('/tickets/{id}/delete', 'api\v1\TicketController@deleteTicket');
+
+Route::get('/sales/today', 'api\v1\SalesController@getToday');
+Route::get('/sales/month', 'api\v1\SalesController@getMonth');
+Route::get('/sales/all', 'api\v1\SalesController@getAll');

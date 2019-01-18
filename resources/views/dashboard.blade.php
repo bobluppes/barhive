@@ -101,4 +101,46 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Todays sales
+                    <div class="pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                Select timeframe
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu pull-right" role="menu">
+                                <li><a href="#" onclick="areaVue.timeframeDay(event);">Today</a>
+                                </li>
+                                <li><a href="#" onclick="areaVue.timeframeMonth(event);">This month</a>
+                                </li>
+                                <li><a href="#" onclick="areaVue.timeframeAlltime(event);">All time</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#"><strong>See more</strong></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="morris-area-chart"></div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/vue.min.js') }}"></script>
+    <script src="{{ asset('js/vue-resource.min.js') }}"></script>
+    <script src="{{ asset('js/Dashboard.js') }}"></script>
 @endsection
