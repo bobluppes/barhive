@@ -19,6 +19,7 @@
 
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="{{ 'css/dataTables.bootstrap.css' }}">
+    <link rel="stylesheet" href="{{ 'css/responsive.dataTables.min.css' }}">
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
@@ -188,13 +189,11 @@
 <script src="{{ asset('js/morris.js') }}"></script>
 {{--<script src="{{ asset('js/morris-data.js') }}"></script>--}}
 
+@yield('scripts')
+
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 <script src="{{ asset('js/Page.js') }}"></script>
-
-<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-
-@yield('scripts')
 
 </body>
 

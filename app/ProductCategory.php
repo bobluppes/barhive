@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Product;
 
 class ProductCategory extends Model
 {
@@ -10,4 +11,14 @@ class ProductCategory extends Model
         'sName',
         'sMakeOrder',
     ];
+
+    public function hasProductBelowMinimum()
+    {
+        $oProducts = Product::where('iCategoryId', $this->id)->get()->filter(function($product) {
+            return ($product->getInventory() < $product->getMinimumInventory());
+        });
+
+        $result = $oProducts->count() > 0;
+        return $result;
+    }
 }
