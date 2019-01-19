@@ -1,7 +1,14 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Tickets
+    <div class="row">
+        <div class="col-md-9">
+            Tickets
+        </div>
+        <div class="col-md-3 text-right">
+            <button class="btn btn-danger" onclick="allOrder.deleteAll();">Delete All</button>
+        </div>
+    </div>
 @endsection
 
 @section('content')

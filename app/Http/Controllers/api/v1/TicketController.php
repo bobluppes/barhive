@@ -31,4 +31,19 @@ class TicketController
     {
         $oTicket = Ticket::where('id', $id)->delete();
     }
+
+    public function deleteAll()
+    {
+        Ticket::getQuery()->delete();
+    }
+
+    public function deleteAllKitchen()
+    {
+        Ticket::where('sDepartment', 'Kitchen')->delete();
+    }
+
+    public function deleteAllBar()
+    {
+        Ticket::where('sDepartment', 'Bar')->delete();
+    }
 }

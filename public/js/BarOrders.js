@@ -1,4 +1,4 @@
-new Vue({
+var barOrder = new Vue({
     el: '#app',
     data: {
         tickets: [],
@@ -7,14 +7,14 @@ new Vue({
 
     template: `<div>
                     <template v-for="ticket in tickets">
-                        <div class="card kitchen-ticket">
-                            <div class="card-header">
+                        <div class="panel panel-default kitchen-ticket">
+                            <div class="panel-heading">
                                 <h1>{{ ticket.sName }}</h1>
                             </div>
-                            <div class="card-body">
+                            <div class="panel-body">
                                 <p>{{ ticket.sComment }}</p>
                             </div>
-                            <div class="card-footer">
+                            <div class="panel-footer">
                                 <h5>{{ new Date(ticket.created_at).getHours() }} : {{ new Date(ticket.created_at).getMinutes() }}</h5>
 
                                 <button class="btn btn-primary" @click="deleteTicket(ticket.id)">Done</button>
@@ -36,6 +36,11 @@ new Vue({
 
         deleteTicket(id) {
             const url = "/api/tickets/" + id + "/delete";
+            this.$http.post(url);
+        },
+
+        deleteAllBar() {
+            const url = "/api/tickets/deleteAllBar";
             this.$http.post(url);
         }
     },
