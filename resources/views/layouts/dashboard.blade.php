@@ -81,9 +81,9 @@
                 <ul class="dropdown-menu dropdown-user">
                     <li class="text-center"><strong>{{ Auth::user()->name }}</strong></li>
                     <li class="divider"></li>
-                    <li><a href="/user"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a href="/user/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
-                    <li><a href="/settings/user"><i class="fa fa-gear fa-fw"></i> Preferences</a>
+                    <li><a href="/user/preferences"><i class="fa fa-gear fa-fw"></i> Preferences</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

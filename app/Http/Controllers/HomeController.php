@@ -110,13 +110,13 @@ class HomeController extends Controller
 
     }
 
-    public function userSettings()
+    public function userPreferences()
     {
-
+        return view('user.preferences');
     }
 
-    public function profile()
+    public function userProfile()
     {
-
+        return view('user.profile');
     }
 }

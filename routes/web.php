@@ -46,5 +46,5 @@ Route::post('/settings/table/layout', 'KonvaTableController@saveLayout');
 
 Route::get('/settings/management', 'HomeController@managementSettings');
 Route::get('/settings/pos', 'HomeController@posSettings');
-Route::get('/settings/user', 'Homecontroller@userSettings');
-Route::get('/user', 'HomeController@profile');
+Route::get('/user/preferences', 'Homecontroller@userPreferences');
+Route::get('/user/profile', 'HomeController@userProfile');
