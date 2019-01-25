@@ -35,8 +35,11 @@
 <div id="container"></div>
 <div id="button">
     <a href="/dashboard"><button id="exit" class="btn btn-success">Exit layout builder</button></a>
-    <button id="add" class="btn btn-success">
-        Add table
+    <button id="addSquare" class="btn btn-success">
+        Add square table
+    </button>
+    <button id="addRound" class="btn btn-success">
+        Add round table
     </button>
     <button id="save" class="btn btn-success">
         Save layout
@@ -48,6 +51,7 @@
     var layer;
     var rectX;
     var rectY;
+    var counter;
 
     window.onload = function() {
 
@@ -61,10 +65,9 @@
                this.stage = new Konva.Stage({
                    container: 'container',
                    width: width,
-                   height: height
+                   height: height,
                });
-
-               console.log(this.stage);
+               this.counter = 1;
 
                this.layer = new Konva.Layer();
                this.rectX = this.stage.getWidth() / 2 - 50;
@@ -75,6 +78,8 @@
                this.stage = Konva.Node.create(JSON.parse(layout[0].json), 'container');
                this.layer = this.stage.getLayers()[0];
 
+               this.counter = this.layer.getChildren().length + 1;
+
                this.rectX = this.stage.getWidth() / 2 - 50;
                this.rectY = this.stage.getHeight() / 2 - 25;
            }
@@ -83,7 +88,7 @@
 
 
 
-    document.getElementById('add').addEventListener('click', function() {
+    document.getElementById('addSquare').addEventListener('click', function() {
         let box = new Konva.Rect({
             x: rectX,
             y: rectY,
@@ -92,7 +97,13 @@
             fill: '#00D2FF',
             stroke: 'black',
             strokeWidth: 4,
-            draggable: true
+        });
+
+        let text = new Konva.Text({
+            text: counter.toString(),
+            fontSize: 25,
+            x: rectX + 40,
+            y: rectY + 15,
         });
 
         // add cursor styling
@@ -103,10 +114,37 @@
             document.body.style.cursor = 'default';
         });
 
-        console.log(this);
-        console.log(layer);
+        let group = new Konva.Group({
+            draggable: true,
+        });
+        group.add(box);
+        group.add(text);
+        layer.add(group);
+        layer.draw();
 
-        layer.add(box);
+        counter++;
+    }, false);
+
+    document.getElementById('addRound').addEventListener('click', function() {
+        let circ = new Konva.Circle({
+            x: rectX,
+            y: rectY,
+            radius: 35,
+            fill: '#00D2FF',
+            stroke: 'black',
+            strokeWidth: 4,
+            draggable: true
+        });
+
+        // add cursor styling
+        circ.on('mouseover', function() {
+            document.body.style.cursor = 'pointer';
+        });
+        circ.on('mouseout', function() {
+            document.body.style.cursor = 'default';
+        });
+
+        layer.add(circ);
         layer.draw();
     }, false);
 
