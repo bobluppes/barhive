@@ -133,7 +133,13 @@
             fill: '#00D2FF',
             stroke: 'black',
             strokeWidth: 4,
-            draggable: true
+        });
+
+        let text = new Konva.Text({
+            text: counter.toString(),
+            fontSize: 25,
+            x: rectX - 8,
+            y: rectY - 8,
         });
 
         // add cursor styling
@@ -144,8 +150,15 @@
             document.body.style.cursor = 'default';
         });
 
-        layer.add(circ);
+        let group = new Konva.Group({
+            draggable: true,
+        });
+        group.add(circ);
+        group.add(text);
+        layer.add(group);
         layer.draw();
+
+        counter++;
     }, false);
 
     document.getElementById('save').addEventListener('click', function() {

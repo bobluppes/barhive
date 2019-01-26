@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="/pos" class="no-decoration">
+                <a href="/pos/{{ $iTable }}" class="no-decoration">
                     <div class="pos-header-back text-center">
                         <h2>Back</h2>
                     </div>
@@ -16,7 +16,7 @@
         <div class="row">
             @foreach ($oProducts as $oProduct)
                 <div class="col-md-4">
-                    <a href="product/{{ $oProduct->id }}" class="no-decoration">
+                    <a href="/pos/{{ $iTable }}/cat/{{ $oProduct->iCategoryId }}/prod/{{ $oProduct->id }}" class="no-decoration">
                         <div class="pos-category text-center">
                             <h2>{{ $oProduct->sName }}</h2>
                         </div>

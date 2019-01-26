@@ -15,8 +15,14 @@ var allOrder = new Vue({
                                 <p>{{ ticket.sComment }}</p>
                             </div>
                             <div class="panel-footer">
-                                <h5>{{ new Date(ticket.created_at).getHours() }} : {{ new Date(ticket.created_at).getMinutes() }}</h5>
-
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>{{ new Date(ticket.created_at).getHours() }} : {{ new Date(ticket.created_at).getMinutes() }}</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Table {{ ticket.iTable }}</h5>
+                                    </div>
+                                </div>
                                 <button class="btn btn-primary" @click="deleteTicket(ticket.id)">Done</button>
                             </div>
                         </div>

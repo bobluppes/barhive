@@ -59,25 +59,30 @@ class HomeController extends Controller
         return view('inventory.editProduct', ['oCategory' => $oCategory, 'oProduct' => $oProduct, 'oInventory' => $oInventory]);
     }
 
-    public function pos()
+    public function posTable()
+    {
+        return view('pos.table');
+    }
+
+    public function pos($iTable)
     {
         $oCategories = ProductCategory::all();
 
-        return view('pos.overview', ['oCategories' => $oCategories]);
+        return view('pos.overview', ['oCategories' => $oCategories, 'iTable' => $iTable]);
     }
 
-    public function posCategory($id)
+    public function posCategory($iTable, $iCat)
     {
-        $oProducts = Product::all()->where('iCategoryId', $id);
+        $oProducts = Product::all()->where('iCategoryId', $iCat);
 
-        return view('pos.categoryOverview', ['oProducts' => $oProducts]);
+        return view('pos.categoryOverview', ['oProducts' => $oProducts, 'iTable' => $iTable]);
     }
 
-    public function posProduct($id)
+    public function posProduct($iTable, $iCat, $iProd)
     {
-        $oProduct = Product::all()->where('id', $id)->first();
+        $oProduct = Product::all()->where('id', $iProd)->first();
 
-        return view('pos.productOverview', ['oProduct' => $oProduct]);
+        return view('pos.productOverview', ['oProduct' => $oProduct, 'iTable' => $iTable]);
     }
 
     public function tickets()

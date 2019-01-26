@@ -25,9 +25,10 @@ Route::get('/inventory/category/{id}/product', 'HomeController@addProduct');
 Route::get('/inventory/product/{id}/edit', 'HomeController@editProduct');
 Route::post('/inventory/product/{id}/edit', 'ProductController@update');
 
-Route::get('/pos', 'HomeController@pos');
-Route::get('/pos/{id}', 'HomeController@posCategory');
-Route::get('/pos/product/{id}', 'HomeController@posProduct');
+Route::get('/pos', 'HomeController@posTable');
+Route::get('/pos/{iTable}', 'HomeController@pos');
+Route::get('/pos/{iTable}/cat/{iCat}', 'HomeController@posCategory');
+Route::get('/pos/{iTable}/cat/{iCat}/prod/{iProd}', 'HomeController@posProduct');
 Route::post('/pos/product', 'OrderController@order');
 
 Route::post('/inventory/category', 'ProductCategoryController@add');

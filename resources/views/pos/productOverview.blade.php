@@ -5,7 +5,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="/pos/{{ $oProduct->iCategoryId }}" class="no-decoration">
+                <a href="/pos/{{ $iTable }}/cat/{{ $oProduct->iCategoryId }}" class="no-decoration">
                     <div class="pos-header-back text-center">
                         <h2>Back</h2>
                     </div>
@@ -24,6 +24,7 @@
                     {!! Form::token() !!}
 
                     {!! Form::hidden('id', $oProduct->id) !!}
+                    {!! Form::hidden('table', $iTable) !!}
 
                     @if ($oProduct->bOrderComment)
                         {!! Form::textArea('orderComment', '', array('class' => 'form-control')) !!}

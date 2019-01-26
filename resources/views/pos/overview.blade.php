@@ -5,9 +5,9 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="/dashboard" class="no-decoration">
-                    <div class="pos-header-exit text-center">
-                        <h2>Exit POS Mode</h2>
+                <a href="/pos" class="no-decoration">
+                    <div class="pos-header-back text-center">
+                        <h2>Back</h2>
                     </div>
                 </a>
             </div>
@@ -16,7 +16,7 @@
         <div class="row">
             @foreach ($oCategories as $oCategory)
                 <div class="col-md-4">
-                    <a href="/pos/{{ $oCategory->id }}/" class="no-decoration">
+                    <a href="/pos/{{ $iTable }}/cat/{{ $oCategory->id }}/" class="no-decoration">
                         <div class="pos-category text-center">
                             <h2>{{ $oCategory->sName }}</h2>
                         </div>

@@ -30,6 +30,7 @@ class OrderController extends Controller
 
         if ($oCategory->sMakeOrder != 'none') {
             $oTicket = new Ticket();
+            $oTicket->iTable = $oRequest->table;
             $oTicket->sName = $oProduct->sName;
             $oTicket->sComment = $orderComment;
             $oTicket->sDepartment = $oCategory->sMakeOrder;
