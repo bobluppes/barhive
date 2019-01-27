@@ -94,28 +94,70 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="panel panel-green">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <i class="fa fa-money fa-5x"></i>
-                        </div>
-                        <div class="col-xs-9 text-right">
-                            <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
-                            <div>Worth in sales made last month</div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <h1>Today</h1>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                                    <div>Worth in sales</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <a href="/inventory">
-                    <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
-                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                        <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <h1>Yesterday</h1>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                                    <div>Worth in sales</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <h1>{{ date('M') }}</h1>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                                    <div>Worth in sales</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <h1>All</h1>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                                    <div>Worth in sales</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 @endsection
 
 @section('scripts')
