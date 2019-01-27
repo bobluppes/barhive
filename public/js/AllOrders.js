@@ -5,28 +5,28 @@ var allOrder = new Vue({
         polling: null,
     },
 
-    template: `<div>
+    template: `<div class="row d-flex align-items-stretch">
                     <template v-for="ticket in tickets">
-                        <div class="panel panel-default kitchen-ticket">
+                        <div class="col-md-4">
+                            <div class="panel panel-primary kitchen-ticket">
                             <div class="panel-heading">
                                 <h1>{{ ticket.sName }}</h1>
                             </div>
                             <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5>Table <strong>{{ ticket.iTable }}</strong></h5>
+                                        <h5>Ordered: <strong>{{ new Date(ticket.created_at).getHours() }} : {{ new Date(ticket.created_at).getMinutes() }}</strong></h5>
+                                    </div>
+                                </div>
                                 <p>{{ ticket.sComment }}</p>
                             </div>
                             <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <h5>{{ new Date(ticket.created_at).getHours() }} : {{ new Date(ticket.created_at).getMinutes() }}</h5>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h5>Table {{ ticket.iTable }}</h5>
-                                    </div>
-                                </div>
-                                <button class="btn btn-primary" @click="deleteTicket(ticket.id)">Done</button>
+                                <button class="btn btn-lg btn-primary" @click="deleteTicket(ticket.id)">Done</button>
+                                <button class="btn btn-lg btn-outline btn-danger" @click="deleteTicket(ticket.id)">Cancel</button>
                             </div>
                         </div>
-                        
+                        </div>
                     </template>    
                 </div>`,
 
