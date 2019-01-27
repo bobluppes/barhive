@@ -2,6 +2,9 @@
 <html>
 <head>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
@@ -34,15 +37,15 @@
 <body>
 <div id="container"></div>
 <div id="button">
-    <a href="/dashboard"><button id="exit" class="btn btn-success">Exit layout builder</button></a>
-    <button id="addSquare" class="btn btn-success">
+    <a href="/dashboard"><button id="exit" class="btn btn-danger">Exit layout builder</button></a>
+    <button id="save" class="btn btn-primary">
+        Save layout
+    </button>
+    <button id="addSquare" class="btn btn-outline btn-success">
         Add square table
     </button>
-    <button id="addRound" class="btn btn-success">
+    <button id="addRound" class="btn btn-outline btn-success">
         Add round table
-    </button>
-    <button id="save" class="btn btn-success">
-        Save layout
     </button>
 </div>
 <script>

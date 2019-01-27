@@ -81,7 +81,7 @@
 
                                 @foreach ($oProducts->where('iCategoryId', $oCategory->id) as $i=>$oProduct)
 
-                                    <tr class="{{ (($i % 2) == 0) ? 'even' : 'odd' }}">
+                                    <tr class="{{ (($i % 2) == 0) ? 'even' : 'odd' }} {{ ($oProduct->getInventory() < $oProduct->getMinimumInventory()) ? 'bg-danger' : '' }}">
                                         <td>{{ $oProduct->sName }}</td>
                                         <td><i class="fa fa-euro"></i> {{ $oProduct->fPrice }}</td>
                                         <td>{{ $oProduct->getInventory() }}</td>

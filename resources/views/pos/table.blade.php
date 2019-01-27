@@ -2,6 +2,10 @@
 <html>
 <head>
 
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
@@ -32,10 +36,19 @@
     </style>
 </head>
 <body>
-<div id="container"></div>
-<div id="button">
-    <a href="/dashboard"><button id="exit" class="btn btn-success">Exit POS Mode</button></a>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/dashboard" class="no-decoration">
+                <div class="pos-header-exit text-center">
+                    <h2>Exit POS Mode</h2>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>
+
+<div id="container"></div>
 <script>
 
     var stage;
@@ -57,6 +70,7 @@
 
                 let tables = this.layer.getChildren();
                 tables.each(function(table) {
+                    table.setAttr('draggable', false);
                     table.on('click', function() {
                         let tableNumber = table.getChildren()[1].getAttr('text');
                         window.location.href = '/pos/' + tableNumber;
