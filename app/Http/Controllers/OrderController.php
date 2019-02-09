@@ -19,6 +19,7 @@ class OrderController extends Controller
     public function order(Request $oRequest)
     {
         $id = $oRequest->id;
+        $iTable = $oRequest->table;
         $orderComment = (string) $oRequest->orderComment;
 
         $oInventory = Inventory::where('iProductId', $id)->first();
@@ -30,7 +31,7 @@ class OrderController extends Controller
 
         if ($oCategory->sMakeOrder != 'none') {
             $oTicket = new Ticket();
-            $oTicket->iTable = $oRequest->table;
+            $oTicket->iTable = $iTable;
             $oTicket->sName = $oProduct->sName;
             $oTicket->sComment = $orderComment;
             $oTicket->sDepartment = $oCategory->sMakeOrder;
@@ -40,10 +41,11 @@ class OrderController extends Controller
         $oSale = new Sales();
         $oSale->iProductId = $oProduct->id;
         $oSale->fPrice = $oProduct->fPrice;
+        $oSale->iTable = $iTable;
         $oSale->save();
 
         flash('Ordered ' . $oProduct->sName)->success();
 
-        return redirect('/pos/' . $oProduct->iCategoryId);
+        return redirect('/pos/' . $iTable . '/cat/' . $oProduct->iCategoryId);
     }
 }

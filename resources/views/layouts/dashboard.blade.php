@@ -138,6 +138,21 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
+                        <a href="#"><i class="fa fa-line-chart fa-fw"></i> Analytics<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="/analytics/sales">Sales</a>
+                            </li>
+                            <li>
+                                <a href="/analytics/products">Products</a>
+                            </li>
+                            <li>
+                                <a href="/analytics/tables">Tables</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+                    <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Settings<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>

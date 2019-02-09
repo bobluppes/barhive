@@ -40,7 +40,9 @@ class ProductController extends Controller
     public function delete($id)
     {
         $oProduct = Product::where('id', $id);
+        $oInventory = Inventory::where('iProductId', $id);
         $oProduct->delete();
+        $oInventory->delete();
 
         return redirect('/inventory');
     }

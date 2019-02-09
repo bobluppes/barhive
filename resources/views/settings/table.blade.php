@@ -176,6 +176,7 @@
             fill: '#ffffff',
             stroke: '#5a3e2d',
             strokeWidth: 2,
+            name: 'table',
         });
 
         let text = new Konva.Text({
@@ -224,6 +225,7 @@
             fill: '#ffffff',
             stroke: '#5a3e2d',
             strokeWidth: 2,
+            name: 'table',
         });
 
         let text = new Konva.Text({

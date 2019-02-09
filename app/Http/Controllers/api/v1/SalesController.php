@@ -76,4 +76,11 @@ class SalesController
 
         return json_encode($data);
     }
+
+    public function getByTable($id)
+    {
+        $sales = Sales::where('iTable', $id)->count();
+
+        return $sales;
+    }
 }

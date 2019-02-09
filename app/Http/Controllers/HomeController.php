@@ -124,4 +124,19 @@ class HomeController extends Controller
     {
         return view('user.profile');
     }
+
+    public function analyticsSales()
+    {
+        return view('analytics.sales');
+    }
+
+    public function analyticsProducts()
+    {
+        return view('analytics.products');
+    }
+
+    public function analyticsTables()
+    {
+        return view('analytics.tables');
+    }
 }

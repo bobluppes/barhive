@@ -49,3 +49,7 @@ Route::get('/settings/management', 'HomeController@managementSettings');
 Route::get('/settings/pos', 'HomeController@posSettings');
 Route::get('/user/preferences', 'Homecontroller@userPreferences');
 Route::get('/user/profile', 'HomeController@userProfile');
+
+Route::get('/analytics/sales', 'HomeController@analyticsSales');
+Route::get('/analytics/products', 'HomeController@analyticsProducts');
+Route::get('/analytics/tables', 'HomeController@analyticsTables');
