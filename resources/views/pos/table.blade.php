@@ -66,7 +66,7 @@
             } else {
 
                 this.stage = Konva.Node.create(JSON.parse(layout[0].json), 'container');
-                this.layer = this.stage.getLayers()[0];
+                this.layer = this.stage.find('#main')[0];
 
                 let tables = this.layer.getChildren();
                 tables.each(function(table) {

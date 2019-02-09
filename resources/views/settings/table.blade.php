@@ -36,18 +36,21 @@
 </head>
 <body>
 <div id="container"></div>
-<div id="button">
+
+<div id="button" class="container-fluid">
     <a href="/dashboard"><button id="exit" class="btn btn-danger">Exit layout builder</button></a>
     <button id="save" class="btn btn-primary">
         Save layout
     </button>
-    <button id="addSquare" class="btn btn-outline btn-success">
+    <br><button id="addSquare" class="btn btn-success">
         Add square table
     </button>
-    <button id="addRound" class="btn btn-outline btn-success">
+    <br><button id="addRound" class="btn btn-success">
         Add round table
     </button>
 </div>
+
+
 <script>
 
     var stage;
@@ -134,6 +137,8 @@
                this.stage.add(layer);
            } else {
                this.stage = Konva.Node.create(JSON.parse(layout[0].json), 'container');
+               this.stage.setWidth(window.innerWidth);
+               this.stage.setHeight(window.innerHeight);
                this.layer = this.stage.find('#main')[0];
 
                this.layer.getChildren().each(function (group) {
