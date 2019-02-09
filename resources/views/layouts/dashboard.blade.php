@@ -53,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">BarHive POS v0.1</a>
+            <a class="navbar-brand" href="/dashboard">BarHive POS v0.1</a>
         </div>
         <!-- /.navbar-header -->
 

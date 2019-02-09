@@ -12,7 +12,7 @@
     <!-- Styles -->
     <style>
         html, body {
-            background-color: #fff;
+            background-image: url('{{ asset('img/stripes-light.png') }}');
             color: #636b6f;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;

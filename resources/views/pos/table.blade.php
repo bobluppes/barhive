@@ -61,7 +61,7 @@
 
             if (layout.length == 0) {
 
-                window.location.href = '/dashboard';
+                window.location.href = '/settings/table';
 
             } else {
 

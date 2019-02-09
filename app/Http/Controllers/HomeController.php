@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sales;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
@@ -127,7 +128,8 @@ class HomeController extends Controller
 
     public function analyticsSales()
     {
-        return view('analytics.sales');
+        $oSales = Sales::all()->sortByDesc('created_at')->take(20);
+        return view('analytics.sales', ['oSales' => $oSales]);
     }
 
     public function analyticsProducts()

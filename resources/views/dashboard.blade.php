@@ -79,7 +79,7 @@
                                 <li><a href="#" onclick="areaVue.timeframeYear(event);">This year</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="#"><strong>See more</strong></a>
+                                <li><a href="/analytics/sales"><strong>See more</strong></a>
                                 </li>
                             </ul>
                         </div>
@@ -158,6 +158,7 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
 
 @section('scripts')

@@ -79,8 +79,7 @@ class SalesController
 
     public function getByTable($id)
     {
-        $sales = Sales::where('iTable', $id)->count();
-
+        $sales = Sales::where('iTable', $id)->sum('fPrice');
         return $sales;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Inventory;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -33,6 +34,11 @@ class ProductController extends Controller
         $oInventory->iInventory = $validatedData['inventory'];
         $oInventory->iMinimumInventory = $validatedData['minimumInventory'];
         $oInventory->save();
+
+        DB::table('product_sales_count')->insert([
+            'iProductId' => $oProduct->id,
+            'count' => 0,
+        ]);
 
         return redirect('/inventory');
     }
