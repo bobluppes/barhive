@@ -71,7 +71,19 @@
                 fillLinearGradientColorStops: [0, '#bc976b', 1, 'red'],
                 id: 'delete',
             });
-            this.deleteLayer.add(deleteRect);
+            let text = new Konva.Text({
+                text: 'DELETE',
+                fill: '#ffffff',
+                fontSize: 40,
+                x: (this.stage.getWidth() / 2) - 150,
+                y: this.stage.getHeight() - 50,
+                id: 'delete',
+            });
+            let group = new Konva.Group();
+            group.add(deleteRect);
+            group.add(text);
+
+            this.deleteLayer.add(group);
             this.stage.add(this.deleteLayer);
             this.deleteLayer.moveToBottom();
         }
@@ -87,6 +99,16 @@
             }
             this.deleteLayer.destroyChildren();
             this.deleteLayer.draw();
+        }
+
+        renameTable = function(group) {
+            console.log(group);
+            let newName = prompt('New name');
+            if (newName) {
+                let text = group.find('.text')[0];
+                text.setAttr('text', newName);
+                this.layer.draw();
+            }
         }
 
         Vue.http.get('/settings/table/layout').then(response => {
@@ -127,6 +149,9 @@
                    group.on('dragend', function() {
                        removeDeleteArea(group);
                    });
+                   group.on('dblclick', function() {
+                       renameTable(group);
+                   });
                });
 
                this.counter = this.layer.getChildren().length + 1;
@@ -154,6 +179,7 @@
             fontSize: 25,
             x: rectX + 40,
             y: rectY + 15,
+            name: 'text',
         });
 
         let group = new Konva.Group({
@@ -172,6 +198,9 @@
         });
         group.on('dragend', function() {
             removeDeleteArea(group);
+        });
+        group.on('dblclick', function() {
+            renameTable(group);
         });
 
         group.add(box);
@@ -198,6 +227,7 @@
             fontSize: 25,
             x: rectX - 8,
             y: rectY - 8,
+            name: 'text',
         });
 
         let group = new Konva.Group({
@@ -216,6 +246,9 @@
         });
         group.on('dragend', function() {
             removeDeleteArea(group);
+        });
+        group.on('dblclick', function() {
+            renameTable(group);
         });
 
         group.add(circ);
