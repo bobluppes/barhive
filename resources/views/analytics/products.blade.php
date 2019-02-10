@@ -6,16 +6,18 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-4">
-            <div class="panel-success">
-                <div class="panel-header">
-
-                </div>
-                <div class="panel-body">
-
+        @foreach ($oTopProducts as $product)
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        {{ $product->sName }}
+                    </div>
+                    <div class="panel-body">
+                        Sold <strong>{{ $product->count }}</strong> times
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 @endsection
 

@@ -8,6 +8,7 @@ use App\Inventory;
 use App\Product;
 use App\ProductCategory;
 use App\Ticket;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -43,6 +44,8 @@ class OrderController extends Controller
         $oSale->fPrice = $oProduct->fPrice;
         $oSale->iTable = $iTable;
         $oSale->save();
+
+        DB::table('product_sales_count')->where('iProductId', $id)->increment('count');
 
         flash('Ordered ' . $oProduct->sName)->success();
 

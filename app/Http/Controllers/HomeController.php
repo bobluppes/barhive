@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
 use App\Inventory;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -134,7 +135,16 @@ class HomeController extends Controller
 
     public function analyticsProducts()
     {
-        return view('analytics.products');
+        $oTopIds = DB::table('product_sales_count')->orderByDesc('count')->take(3)->get();
+
+        $oTopProducts = [];
+        foreach ($oTopIds as $i=>$top) {
+            $oTopProducts[$i] = new \stdClass();
+            $oTopProducts[$i]->sName = Product::where('id', $top->iProductId)->first()->sName;
+            $oTopProducts[$i]->count = $top->count;
+        }
+
+        return view('analytics.products', ['oTopProducts' => $oTopProducts]);
     }
 
     public function analyticsTables()
