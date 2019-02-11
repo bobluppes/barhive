@@ -103,11 +103,11 @@
                                 <div class="col-xs-3">
                                     <h1>Today</h1>
                                 </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
-                                    <div>Worth in sales</div>
-                                </div>
                             </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                            <div>Worth in sales</div>
                         </div>
                     </div>
                 </div>
@@ -118,11 +118,11 @@
                                 <div class="col-xs-3">
                                     <h1>Yesterday</h1>
                                 </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
-                                    <div>Worth in sales</div>
-                                </div>
                             </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                            <div>Worth in sales</div>
                         </div>
                     </div>
                 </div>
@@ -133,11 +133,11 @@
                                 <div class="col-xs-3">
                                     <h1>{{ date('M') }}</h1>
                                 </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
-                                    <div>Worth in sales</div>
-                                </div>
                             </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                            <div>Worth in sales</div>
                         </div>
                     </div>
                 </div>
@@ -148,11 +148,11 @@
                                 <div class="col-xs-3">
                                     <h1>All</h1>
                                 </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
-                                    <div>Worth in sales</div>
-                                </div>
                             </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="huge">€ {{ App\Sales::where(DB::raw('MONTH(created_at)'), '=', date('n'))->get()->sum('fPrice') }}</div>
+                            <div>Worth in sales</div>
                         </div>
                     </div>
                 </div>
