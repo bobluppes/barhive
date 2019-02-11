@@ -123,6 +123,9 @@
                         <a href="/pos"><i class="fa fa-laptop fa-fw"></i> POS Mode</a>
                     </li>
                     <li>
+                        <a href="/reservations"><i class="fa fa-list-alt fa-fw"></i> Reservations</a>
+                    </li>
+                    <li>
                         <a href="#"><i class="fa fa-ticket fa-fw"></i> Ticket Monitoring<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>

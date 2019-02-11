@@ -151,4 +151,9 @@ class HomeController extends Controller
     {
         return view('analytics.tables');
     }
+
+    public function reservations()
+    {
+        return view('reservations.overview');
+    }
 }
