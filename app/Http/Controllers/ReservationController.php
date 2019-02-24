@@ -19,16 +19,24 @@ class ReservationController extends Controller
             'end' => 'required',
         ]);
 
-        //create a new event
+        // Create a new event and save to google
         $event = new Event;
-
         $event->name = 'Reservation ' . $validatedData['name'];
-        $event->startDateTime = Carbon::now();
-        $event->endDateTime = Carbon::now()->addHour();
+        $event->startDateTime = Carbon::parse($validatedData['start']);
+        $event->endDateTime = Carbon::parse($validatedData['end']);
         $event->addAttendee(['email' => env('COMPANY_EMAIL')]);
         $event->addAttendee(['email' => $validatedData['email']]);
-
         $event->save();
+
+        // save event to local database
+        $reservation = new Reservation();
+        $reservation->name = $validatedData['name'];
+        $reservation->email = $validatedData['email'];
+        $reservation->people = $validatedData['people'];
+        $reservation->table = 1;
+        $reservation->start = Carbon::parse($validatedData['start']);
+        $reservation->end = Carbon::parse($validatedData['end']);
+        $reservation->save();
 
         return view('reservations.overview');
     }
