@@ -120,12 +120,12 @@ class HomeController extends Controller
 
     public function managementSettings()
     {
-
+        return view('settings.management');
     }
 
     public function posSettings()
     {
-
+        return view('settings.pos');
     }
 
     public function userPreferences()
