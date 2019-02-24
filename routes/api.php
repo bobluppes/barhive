@@ -34,3 +34,9 @@ Route::get('/sales/table/{id}', 'api\v1\SalesController@getByTable');
 Route::post('/tickets/deleteAll', 'api\v1\TicketController@deleteAll');
 Route::post('/tickets/deleteAllKitchen', 'api\v1\TicketController@deleteAllKitchen');
 Route::post('/tickets/deleteAllBar', 'api\v1\TicketController@deleteAllBar');
+
+Route::post('/table/create', 'api\v1\TableController@createTable');
+Route::post('/table/rename', 'api\v1\TableController@renameTable');
+Route::post('/table/delete', 'api\v1\TableController@deleteTable');
+Route::post('/table/save', 'api\v1\TableController@save');
+Route::post('/table/nosave', 'api\v1\TableController@nosave');

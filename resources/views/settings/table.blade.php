@@ -38,7 +38,7 @@
 <div id="container"></div>
 
 <div id="button" class="container-fluid">
-    <a href="/dashboard"><button id="exit" class="btn btn-danger">Exit layout builder</button></a>
+    <button id="exit" class="btn btn-danger">Exit layout builder</button>
     <button id="save" class="btn btn-primary">
         Save layout
     </button>
@@ -96,7 +96,10 @@
             let shape = this.deleteLayer.getIntersection(pos);
             if (shape) {
                 if (shape.getAttr('id') == 'delete') {
+                    var tableId = group.find('.text')[0].getAttr('text');
                     group.destroy();
+                    Vue.http.post('/api/table/delete', {table: tableId}).then(response => {
+                    });
                     this.layer.draw();
                 }
             }
@@ -109,9 +112,17 @@
             let newName = prompt('New name');
             if (newName) {
                 let text = group.find('.text')[0];
+                var oldName = text.getAttr('text');
                 text.setAttr('text', newName);
+                Vue.http.post('/api/table/rename', {old: oldName, new: newName}).then(response => {
+                });
                 this.layer.draw();
             }
+        }
+
+        addDBTable = function(id) {
+            Vue.http.post('/api/table/create', {table: id}).then(response => {
+            });
         }
 
         Vue.http.get('/settings/table/layout').then(response => {
@@ -209,6 +220,8 @@
             renameTable(group);
         });
 
+        addDBTable(counter.toString());
+
         group.add(box);
         group.add(text);
         layer.add(group);
@@ -258,6 +271,8 @@
             renameTable(group);
         });
 
+        addDBTable(counter.toString());
+
         group.add(circ);
         group.add(text);
         layer.add(group);
@@ -273,6 +288,14 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+
+        Vue.http.post('/api/table/save');
+    }, false);
+
+    document.getElementById('exit').addEventListener('click', function() {
+        Vue.http.post('/api/table/nosave').then(response => {
+            window.location.href = '/dashboard';
         });
     }, false);
 </script>
