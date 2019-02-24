@@ -71,10 +71,18 @@
                 let tables = this.layer.getChildren();
                 tables.each(function(table) {
                     table.setAttr('draggable', false);
+                    var tableNumber = table.getChildren()[1].getAttr('text');
                     table.on('click', function() {
-                        let tableNumber = table.getChildren()[1].getAttr('text');
                         window.location.href = '/pos/' + tableNumber;
-                    })
+                    });
+                    Vue.http.get('/api/table/' + tableNumber + '/status').then(response => {
+                        if (response.body.toString() == 'seated') {
+                            let shape = table.find('.table')[0];
+                            shape.setAttr('fill', 'lightblue');
+                            this.layer.draw();
+                        }
+                    });
+
                 })
             }
         }).bind(this);

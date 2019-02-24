@@ -77,4 +77,12 @@ class TableController
         $toDelete->delete();
     }
 
+    public function status($id)
+    {
+        $oTable = Table::where('iTableId', $id)->first();
+        $sStatus = $oTable->sCurrentStatus;
+
+        return $sStatus;
+    }
+
 }

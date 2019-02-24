@@ -40,3 +40,4 @@ Route::post('/table/rename', 'api\v1\TableController@renameTable');
 Route::post('/table/delete', 'api\v1\TableController@deleteTable');
 Route::post('/table/save', 'api\v1\TableController@save');
 Route::post('/table/nosave', 'api\v1\TableController@nosave');
+Route::get('/table/{id}/status', 'api\v1\TableController@status');

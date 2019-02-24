@@ -24,5 +24,16 @@
                 </div>
             @endforeach
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/pos/{{ $iTable }}/pay" class="no-decoration">
+                    <div class="pos-header-exit text-center">
+                        <h2>Pay Bill</h2>
+                        <p>Table {{ $iTable }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use App\Sales;
 use Illuminate\Http\Request;
 use App\Inventory;
@@ -9,6 +10,7 @@ use App\Product;
 use App\ProductCategory;
 use App\Ticket;
 use Illuminate\Support\Facades\DB;
+use App\Table;
 
 class OrderController extends Controller
 {
@@ -39,10 +41,26 @@ class OrderController extends Controller
             $oTicket->save();
         }
 
+        // Change table status if needed
+        $oTable = Table::where('iTableId', $iTable)->first();
+        $status = $oTable->sCurrentStatus;
+        if ($status == 'empty') {
+            $oTable->sCurrentStatus = 'seated';
+            $oTable->save();
+
+            $oBill = new Bill();
+            $oBill->iTableId = $iTable;
+            $oBill->iStatus = 0;
+            $oBill->save();
+        } else {
+            $oBill = Bill::where('iTableId', $iTable)->where('iStatus', 0)->first();
+        }
+
         $oSale = new Sales();
         $oSale->iProductId = $oProduct->id;
         $oSale->fPrice = $oProduct->fPrice;
         $oSale->iTable = $iTable;
+        $oSale->iBillId = $oBill->id;
         $oSale->save();
 
         DB::table('product_sales_count')->where('iProductId', $id)->increment('count');
