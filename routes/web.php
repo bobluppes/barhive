@@ -29,6 +29,7 @@ Route::get('/pos', 'HomeController@posTable');
 Route::get('/pos/{iTable}', 'HomeController@pos');
 Route::get('/pos/{iTable}/cat/{iCat}', 'HomeController@posCategory');
 Route::get('/pos/{iTable}/cat/{iCat}/prod/{iProd}', 'HomeController@posProduct');
+Route::get('/pos/{iTable}/pay', 'HomeController@posPay');
 Route::post('/pos/product', 'OrderController@order');
 
 Route::post('/inventory/category', 'ProductCategoryController@add');

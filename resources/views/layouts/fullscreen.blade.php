@@ -61,6 +61,8 @@
 <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 <script src="{{ asset('js/Page.js') }}"></script>
 
+@yield('scripts')
+
 </body>
 
 </html>

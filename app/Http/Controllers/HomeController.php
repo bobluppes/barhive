@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Sales;
+use App\Table;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
@@ -69,8 +70,9 @@ class HomeController extends Controller
     public function pos($iTable)
     {
         $oCategories = ProductCategory::all();
+        $oTable = Table::where('iTableId', $iTable)->first();
 
-        return view('pos.overview', ['oCategories' => $oCategories, 'iTable' => $iTable]);
+        return view('pos.overview', ['oCategories' => $oCategories, 'oTable' => $oTable]);
     }
 
     public function posCategory($iTable, $iCat)
@@ -85,6 +87,15 @@ class HomeController extends Controller
         $oProduct = Product::all()->where('id', $iProd)->first();
 
         return view('pos.productOverview', ['oProduct' => $oProduct, 'iTable' => $iTable]);
+    }
+
+    public function posPay($iTable)
+    {
+        $oTable = Table::where('iTableId', $iTable)->first();
+        $oBill = $oTable->getBill();
+        $oSales = $oBill->getSales();
+
+        return view('pos.pay', ['oTable' => $oTable, 'oBill' => $oBill, 'oSales' => $oSales]);
     }
 
     public function tickets()
