@@ -110,7 +110,7 @@
         renameTable = function(group) {
             console.log(group);
             let newName = prompt('New name');
-            if (newName) {
+            if (newName && !isNaN(newName)) {
                 let text = group.find('.text')[0];
                 var oldName = text.getAttr('text');
                 text.setAttr('text', newName);
