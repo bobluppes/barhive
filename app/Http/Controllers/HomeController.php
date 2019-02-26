@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Sales;
+use App\Setting;
 use App\Table;
+use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
 use App\ProductCategory;
 use App\Product;
@@ -64,6 +66,11 @@ class HomeController extends Controller
 
     public function posTable()
     {
+        $bDontOrderOnTable = Setting::where('setting', 'dontOrderOnTable')->first()->value;
+        if ($bDontOrderOnTable == 1) {
+            return redirect('pos/-1');
+        }
+
         return view('pos.table');
     }
 
@@ -71,15 +78,17 @@ class HomeController extends Controller
     {
         $oCategories = ProductCategory::all();
         $oTable = Table::where('iTableId', $iTable)->first();
+        $bDontOrderOnTable = Setting::where('setting', 'dontOrderOnTable')->first()->value;
 
-        return view('pos.overview', ['oCategories' => $oCategories, 'oTable' => $oTable]);
+        return view('pos.overview', ['oCategories' => $oCategories, 'oTable' => $oTable, 'bDontOrderOnTable' => $bDontOrderOnTable]);
     }
 
     public function posCategory($iTable, $iCat)
     {
         $oProducts = Product::all()->where('iCategoryId', $iCat);
+        $bQuickOrder = Setting::where('setting', 'quickOrder')->first()->value;
 
-        return view('pos.categoryOverview', ['oProducts' => $oProducts, 'iTable' => $iTable]);
+        return view('pos.categoryOverview', ['oProducts' => $oProducts, 'iTable' => $iTable, 'bQuickOrder' => $bQuickOrder]);
     }
 
     public function posProduct($iTable, $iCat, $iProd)
@@ -120,12 +129,14 @@ class HomeController extends Controller
 
     public function managementSettings()
     {
-        return view('settings.management');
+        $curr = Setting::where('setting', 'curr')->first()->value;
+        return view('settings.management', ['curr' => $curr]);
     }
 
     public function posSettings()
     {
-        return view('settings.pos');
+        $oSettings = Setting::all();
+        return view('settings.pos', ['oSettings' => $oSettings]);
     }
 
     public function userPreferences()

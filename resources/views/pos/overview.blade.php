@@ -5,11 +5,23 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a href="/pos" class="no-decoration">
-                    <div class="pos-header-back text-center">
-                        <h2>Back</h2>
+                @if ($bDontOrderOnTable == 0)
+                    <a href="/pos" class="no-decoration">
+                        <div class="pos-header-back text-center">
+                            <h2>Back</h2>
+                        </div>
+                    </a>
+                @elseif ($oTable->hasOpenBill())
+                    <div class="pos-header-disabled text-center">
+                        <h2>Exit</h2>
                     </div>
-                </a>
+                @else
+                    <a href="/dashboard" class="no-decoration">
+                        <div class="pos-header-exit text-center">
+                            <h2>Exit</h2>
+                        </div>
+                    </a>
+                @endif
             </div>
         </div>
 

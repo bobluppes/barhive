@@ -14,7 +14,8 @@
             </a>
         </div>
         <div class="col-md-3">
-            <input type="checkbox"/>
+            <input type="checkbox" name="dontOrderOnTable" onchange="saveSetting(this.name, this.checked);"
+                    {{ ($oSettings->where('setting', 'dontOrderOnTable')->first()->value) ? 'checked' : '' }}>
         </div>
     </div>
 
@@ -27,7 +28,8 @@
             </a>
         </div>
         <div class="col-md-3">
-            <input type="checkbox"/>
+            <input type="checkbox" name="quickOrder" onchange="saveSetting(this.name, this.checked);"
+                    {{ ($oSettings->where('setting', 'quickOrder')->first()->value) ? 'checked' : '' }}>
         </div>
     </div>
 @endsection
@@ -38,4 +40,8 @@
             $('[data-toggle="popover"]').popover();
         });
     </script>
+
+    <script src="/js/vue.min.js"></script>
+    <script src="/js/vue-resource.min.js"></script>
+    <script src="{{ asset('js/settings/pos.js') }}"></script>
 @endsection
