@@ -9,6 +9,9 @@
     <meta name="description" content="Demo of the BarHive POS System">
     <meta name="author" content="BarHive">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>BarHive POS - Demo</title>
 
     <!-- Bootstrap Core CSS -->

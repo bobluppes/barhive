@@ -14,7 +14,7 @@
             </a>
         </div>
         <div class="col-md-3">
-            <input type="checkbox" name="dontOrderOnTable" onchange="saveSetting(this.name, this.checked);"
+            <input type="checkbox" name="dontOrderOnTable" onchange="saveSetting('dontOrderOnTable', this.checked);"
                     {{ ($oSettings->where('setting', 'dontOrderOnTable')->first()->value) ? 'checked' : '' }}>
         </div>
     </div>
@@ -28,7 +28,7 @@
             </a>
         </div>
         <div class="col-md-3">
-            <input type="checkbox" name="quickOrder" onchange="saveSetting(this.name, this.checked);"
+            <input type="checkbox" name="quickOrder" onchange="saveSetting('quickOrder', this.checked);"
                     {{ ($oSettings->where('setting', 'quickOrder')->first()->value) ? 'checked' : '' }}>
         </div>
     </div>

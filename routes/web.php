@@ -45,6 +45,10 @@ Route::get('/tickets', 'HomeController@tickets');
 Route::get('/settings/table', 'HomeController@tableSettings');
 Route::get('/settings/table/layout', 'KonvaTableController@getLayout');
 Route::post('/settings/table/layout', 'KonvaTableController@saveLayout');
+Route::get('/settings/table/poslayout', 'KonvaTableController@getPosLayout');
+Route::post('/settings/table/poslayout', 'KonvaTableController@savePosLayout');
+Route::get('/settings/table/analyticslayout', 'KonvaTableController@getAnalyticsLayout');
+Route::post('/settings/table/analyticslayout', 'KonvaTableController@saveAnalyticsLayout');
 
 Route::get('/settings/management', 'HomeController@managementSettings');
 Route::get('/settings/pos', 'HomeController@posSettings');

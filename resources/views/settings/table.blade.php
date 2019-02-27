@@ -147,7 +147,7 @@
 
                this.stage.add(layer);
            } else {
-               this.stage = Konva.Node.create(JSON.parse(layout[0].json), 'container');
+               this.stage = Konva.Node.create(JSON.parse(layout.json), 'container');
                this.stage.setWidth(window.innerWidth);
                this.stage.setHeight(window.innerHeight);
                this.layer = this.stage.find('#main')[0];

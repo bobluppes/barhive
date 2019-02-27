@@ -17,7 +17,7 @@ class SettingsController
     {
         $validatedData = $oRequest->validate([
             'setting' => 'required|string',
-            'value' => 'required|int',
+            'value' => 'required',
         ]);
 
         // Set the setting

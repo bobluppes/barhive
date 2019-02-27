@@ -53,38 +53,65 @@
 
     var stage;
     var layer;
+    var needSave = 0;
 
     window.onload = function() {
 
-        Vue.http.get('/settings/table/layout').then(response => {
-            layout = response.body;
+        this.needSave = 0;
 
-            if (layout.length == 0) {
+        drawLayout = function(layout) {
+            this.stage = Konva.Node.create(JSON.parse(layout.json), 'container');
+            this.layer = this.stage.find('#main')[0];
+            this.layer.draw();
 
-                window.location.href = '/settings/table';
+            let tables = this.layer.getChildren();
+            tables.each(function(table) {
+                table.setAttr('draggable', false);
+                var tableNumber = table.getChildren()[1].getAttr('text');
+                table.on('click', function() {
+                    window.location.href = '/pos/' + tableNumber;
+                });
+                Vue.http.get('/api/table/' + tableNumber + '/status').then(response => {
+                    let shape = table.find('.table')[0];
+                    if (response.body.toString() == 'seated' && shape.getAttr('fill') != 'lightblue') {
+                        needSave = 1;
+                        shape.setAttr('fill', 'lightblue');
+                        this.layer.draw();
+                    } else if (response.body.toString() == 'empty' && shape.getAttr('fill') != 'white') {
+                        needSave = 1;
+                        shape.setAttr('fill', 'white');
+                        this.layer.draw();
+                    }
+                }).then(function () {
+                    if (needSave == 1) {
+                        var layout = stage;
+                        console.log(layout);
+                        Vue.http.post('/settings/table/poslayout', {jsonLayout: layout}, {
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            }
+                        });
+                    }
+                });
 
-            } else {
+            })
+        }
 
-                this.stage = Konva.Node.create(JSON.parse(layout[0].json), 'container');
-                this.layer = this.stage.find('#main')[0];
-
-                let tables = this.layer.getChildren();
-                tables.each(function(table) {
-                    table.setAttr('draggable', false);
-                    var tableNumber = table.getChildren()[1].getAttr('text');
-                    table.on('click', function() {
-                        window.location.href = '/pos/' + tableNumber;
-                    });
-                    Vue.http.get('/api/table/' + tableNumber + '/status').then(response => {
-                        if (response.body.toString() == 'seated') {
-                            let shape = table.find('.table')[0];
-                            shape.setAttr('fill', 'lightblue');
-                            this.layer.draw();
-                        }
-                    });
-
+        Vue.http.get('/settings/table/poslayout').then(response => {
+            var poslayout = response.body;
+            if (poslayout == '') {
+                Vue.http.get('/settings/table/layout').then(response => {
+                    var layout = response.body;
+                    if (layout == '') {
+                        window.location.href = '/settings/table';
+                    } else {
+                        drawLayout(layout);
+                    }
                 })
+            } else {
+                drawLayout(poslayout);
             }
+
         }).bind(this);
     }
 </script>
