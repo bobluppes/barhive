@@ -27,4 +27,9 @@ class Table extends Model
         $oBill = Bill::where('iTableId', $this->iTableId)->where('iStatus', 0)->first();
         return $oBill;
     }
+
+    public function bill()
+    {
+        return $this->hasOne('App\Bill', 'iTableId', 'iTableId');
+    }
 }

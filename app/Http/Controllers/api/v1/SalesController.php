@@ -82,4 +82,10 @@ class SalesController
         $sales = Sales::where('iTable', $id)->sum('fPrice');
         return $sales;
     }
+
+    public function delete($id)
+    {
+        $oSale = Sales::where('id', $id)->first();
+        $oSale->delete();
+    }
 }

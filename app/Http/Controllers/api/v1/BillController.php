@@ -24,4 +24,22 @@ class BillController
         $oTable->sCurrentStatus = 'empty';
         $oTable->save();
     }
+
+    public function delete($id)
+    {
+        // Delete all sales associated
+        $oBill = Bill::where('id', $id)->first();
+        $oSales = $oBill->sales;
+        foreach ($oSales as $oSale) {
+            $oSale->delete();
+        }
+
+        // Free the table
+        $oTable = $oBill->table;
+        $oTable->sCurrentStatus = 'empty';
+        $oTable->save();
+
+        // Delete the bill
+        $oBill->delete();
+    }
 }

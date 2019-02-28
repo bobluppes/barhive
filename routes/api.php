@@ -42,6 +42,9 @@ Route::post('/table/save', 'api\v1\TableController@save');
 Route::post('/table/nosave', 'api\v1\TableController@nosave');
 Route::get('/table/{id}/status', 'api\v1\TableController@status');
 
+Route::post('/sale/{id}/delete', 'api\v1\SalesController@delete');
+
 Route::post('/bill/{id}/pay', 'api\v1\BillController@pay');
+Route::post('/bill/{id}/delete', 'api\v1\BillController@delete');
 
 Route::post('/settings/set', 'api\v1\SettingsController@set');

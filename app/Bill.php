@@ -7,9 +7,13 @@ use App\Sales;
 
 class Bill extends Model
 {
-    public function getSales()
+    public function sales()
     {
-        $oSales = Sales::where('iBillId', $this->id)->get();
-        return $oSales;
+        return $this->hasMany('App\Sales', 'iBillId');
+    }
+
+    public function table()
+    {
+        return $this->belongsTo('App\Table', 'iTableId', 'iTableId');
     }
 }

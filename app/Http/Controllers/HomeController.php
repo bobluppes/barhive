@@ -102,7 +102,7 @@ class HomeController extends Controller
     {
         $oTable = Table::where('iTableId', $iTable)->first();
         $oBill = $oTable->getBill();
-        $oSales = $oBill->getSales();
+        $oSales = $oBill->sales;
 
         return view('pos.pay', ['oTable' => $oTable, 'oBill' => $oBill, 'oSales' => $oSales]);
     }

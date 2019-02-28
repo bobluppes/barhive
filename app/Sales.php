@@ -17,4 +17,8 @@ class Sales extends Model
 
         return $oProduct;
     }
+
+    public function bill() {
+        return $this->belongsTo('App\Bill', 'iBillId');
+    }
 }
