@@ -6,6 +6,19 @@ var counter;
 var deleteLayer;
 var needSave = 0;
 
+var tooltipLayer = new Konva.Layer();
+var tooltip = new Konva.Text({
+    text: "",
+    fontFamily: "Calibri",
+    fontSize: 20,
+    padding: 5,
+    textFill: "white",
+    fill: "black",
+    alpha: 0.75,
+    visible: false
+});
+tooltipLayer.add(tooltip);
+
 window.onload = function() {
 
     this.needSave = 0;
@@ -15,6 +28,7 @@ window.onload = function() {
         this.stage.setWidth(window.innerWidth);
         this.stage.setHeight(window.innerHeight);
         this.layer = this.stage.find('#main')[0];
+        stage.add(tooltipLayer);
 
         var sales = {};
         var waiting = this.layer.getChildren().length;
@@ -40,6 +54,20 @@ window.onload = function() {
                             shape.opacity((tableSales / max) * 0.9 + 0.1);
                             this.layer.draw();
                         }
+                        group.on("mousemove", function(){
+                            var mousePos = stage.getPointerPosition();
+                            tooltip.position({
+                                x : mousePos.x + 5,
+                                y : mousePos.y + 5
+                            });
+                            tooltip.text(tableSales.toString());
+                            tooltip.show();
+                            tooltipLayer.batchDraw();
+                        });
+                        group.on("mouseout", function(){
+                            tooltip.hide();
+                            tooltipLayer.draw();
+                        });
                     });
                 }
             }).then(function () {
