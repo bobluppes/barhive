@@ -9,7 +9,7 @@
         <div class="panel-group" id="accordion">
 
             @foreach ($oCategories as $oCategory)
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="opacity:{{ ($oCategory->bActive == 0) ? '0.4' : '1' }};">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ $oCategory->id }}">{{ $oCategory->sName }} (<strong>{{ count($oProducts->where('iCategoryId', $oCategory->id)) }}</strong>)</a>
@@ -36,7 +36,7 @@
                                 @foreach ($oProducts->where('iCategoryId', $oCategory->id) as $i=>$oProduct)
 
                                     <tr class="{{ (($i % 2) == 0) ? 'even' : 'odd' }} {{ ($oProduct->getInventory() < $oProduct->getMinimumInventory()) ? 'bg-danger' : '' }}">
-                                        <td>{{ $oProduct->sName }}</td>
+                                        <td style="text-decoration:{{ ($oProduct->bActive == 0) ? 'line-through' : '' }}">{{ $oProduct->sName }}</td>
                                         <td><i class="fa fa-euro"></i> {{ $oProduct->fPrice }}</td>
                                         <td>{{ $oProduct->getInventory() }}</td>
                                         <td>{{ $oProduct->getMinimumInventory() }}</td>

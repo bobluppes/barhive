@@ -93,7 +93,7 @@ class HomeController extends Controller
 
     public function pos($iTable)
     {
-        $oCategories = ProductCategory::all();
+        $oCategories = ProductCategory::where('bActive', 1)->get();
         $oTable = Table::where('iTableId', $iTable)->first();
         $bDontOrderOnTable = Setting::where('setting', 'dontOrderOnTable')->first()->value;
 
@@ -102,7 +102,7 @@ class HomeController extends Controller
 
     public function posCategory($iTable, $iCat)
     {
-        $oProducts = Product::all()->where('iCategoryId', $iCat);
+        $oProducts = Product::all()->where('iCategoryId', $iCat)->where('bActive', 1);
         $bQuickOrder = Setting::where('setting', 'quickOrder')->first()->value;
 
         return view('pos.categoryOverview', ['oProducts' => $oProducts, 'iTable' => $iTable, 'bQuickOrder' => $bQuickOrder]);
