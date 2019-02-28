@@ -188,6 +188,10 @@
             <!-- /.col-lg-12 -->
         </div>
 
+        <div class="container-fluid">
+            @include('flash::message')
+        </div>
+
         @yield('content')
 
     </div>
@@ -215,6 +219,11 @@
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 <script src="{{ asset('js/Page.js') }}"></script>
+
+{{-- Hide flash messages --}}
+<script>
+    $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
 
 </body>
 

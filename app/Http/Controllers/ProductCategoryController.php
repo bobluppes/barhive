@@ -34,6 +34,7 @@ class ProductCategoryController extends Controller
         $oCategory->sMakeOrder = $validatedData['makeOrder'];
         $oCategory->save();
 
+        flash('Category ' . $oCategory->sName . ' saved')->success();
         return redirect('/inventory');
     }
 

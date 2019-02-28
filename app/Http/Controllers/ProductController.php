@@ -78,6 +78,7 @@ class ProductController extends Controller
         $oInventory->iMinimumInventory = $validatedData['minimumInventory'];
         $oInventory->save();
 
+        flash('Product ' . $oProduct->sName . ' saved')->success();
         return redirect('/inventory');
     }
 }
