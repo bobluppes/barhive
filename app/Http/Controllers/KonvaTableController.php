@@ -28,6 +28,16 @@ class KonvaTableController extends Controller
         $konva->property = 'layout';
         $konva->json = $oRequest->jsonLayout;
         $konva->save();
+
+        // Delete cached layouts
+        $posLayout = konvaTable::where('property', 'posLayout');
+        $analyticsLayout = konvaTable::where('property', 'analyticsLayout');
+        if ($posLayout->count() > 0) {
+            $posLayout->first()->delete();
+        }
+        if ($analyticsLayout->count() > 0) {
+            $analyticsLayout->first()->delete();
+        }
     }
 
     public function getPosLayout()

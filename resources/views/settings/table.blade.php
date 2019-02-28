@@ -62,6 +62,19 @@
 
     window.onload = function() {
 
+        checkNum = function(num) {
+            var aNums = [];
+            layer.getChildren().each(function(group) {
+                aNums.push(group.find('.text')[0].getText());
+            });
+
+            while(aNums.includes(num.toString())) {
+                num++;
+            }
+
+            return num;
+        }
+
         drawDeleteArea = function() {
             this.deleteLayer = new Konva.Layer();
             let deleteRect = new Konva.Rect({
@@ -109,8 +122,9 @@
 
         renameTable = function(group) {
             console.log(group);
-            let newName = prompt('New name');
-            if (newName && !isNaN(newName)) {
+            let name = prompt('New name');
+            let newName = checkNum(name);
+            if (newName && !isNaN(newName) && name == newName && parseInt(name) > 0) {
                 let text = group.find('.text')[0];
                 var oldName = text.getAttr('text');
                 text.setAttr('text', newName);
@@ -179,6 +193,7 @@
     }
 
     document.getElementById('addSquare').addEventListener('click', function() {
+        counter = checkNum(counter);
         let box = new Konva.Rect({
             x: rectX,
             y: rectY,
@@ -231,6 +246,7 @@
     }, false);
 
     document.getElementById('addRound').addEventListener('click', function() {
+        counter = checkNum(counter);
         let circ = new Konva.Circle({
             x: rectX,
             y: rectY,
