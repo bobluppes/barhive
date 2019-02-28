@@ -26,15 +26,17 @@
         </div>
 
         <div class="row">
-            @foreach ($oCategories as $oCategory)
-                <div class="col-md-4">
+            <div class="container">
+                @foreach ($oCategories as $oCategory)
                     <a href="/pos/{{ $oTable->iTableId }}/cat/{{ $oCategory->id }}/" class="no-decoration">
-                        <div class="pos-category text-center">
-                            <h2>{{ $oCategory->sName }}</h2>
+                        <div class="col-sm-4 pos-category">
+                            <div class="text-center">
+                                <h2 style="font-size: calc(15px + 0.9vw);">{{ $oCategory->sName }}</h2>
+                            </div>
                         </div>
                     </a>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
 
         @if ($oTable->hasOpenBill())

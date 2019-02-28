@@ -14,8 +14,8 @@
         </div>
 
         <div class="row">
-            @foreach ($oProducts as $oProduct)
-                <div class="col-md-4">
+            <div class="container">
+                @foreach ($oProducts as $oProduct)
                     @if ($bQuickOrder == 0)
                         <a href="/pos/{{ $iTable }}/cat/{{ $oProduct->iCategoryId }}/prod/{{ $oProduct->id }}" class="no-decoration">
                     @else
@@ -27,15 +27,17 @@
                         {!! Form::hidden('orderComment', '', array('class' => 'form-control')) !!}
                         <a onclick="$('#form{{ $oProduct->id }}').submit();" class="no-decoration">
                     @endif
-                        <div class="pos-category text-center">
-                            <h2>{{ $oProduct->sName }}</h2>
+                        <div class="col-sm-4 pos-category">
+                            <div class="text-center">
+                                <h2 style="font-size: calc(15px + 0.9vw);">{{ $oProduct->sName }}</h2>
+                            </div>
                         </div>
                     </a>
                     @if ($bQuickOrder != 0)
                         {!! Form::close() !!}
                     @endif
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
     </div>
 @endsection
