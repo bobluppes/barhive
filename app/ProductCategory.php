@@ -10,6 +10,7 @@ class ProductCategory extends Model
     protected $fillable = [
         'sName',
         'sMakeOrder',
+        'bActive',
     ];
 
     public function hasProductBelowMinimum()

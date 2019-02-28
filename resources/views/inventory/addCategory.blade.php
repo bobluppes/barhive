@@ -32,12 +32,29 @@
                                 {!! Form::radio('makeOrder', 'Kitchen', false) !!} Kitchen<br>
                             </div>
                         </div>
-
-                        {!! Form::submit('Save', array('class' => 'btn btn-primary')) !!}
-
-                        {!! Form::close() !!}
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Form::label('active', 'Active', array('class' => 'col-2 col-form-label')) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Form::checkbox('active', 'active', true, array('class' => '')) !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {!! Form::submit('Save', array('class' => 'btn btn-primary')) !!}
+
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

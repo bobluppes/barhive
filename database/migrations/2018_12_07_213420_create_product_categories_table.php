@@ -17,6 +17,7 @@ class CreateProductCategoriesTable extends Migration
             $table->increments('id');
             $table->string('sName');
             $table->string('sMakeOrder');
+            $table->boolean('bActive')->default(true);
             $table->timestamps();
         });
     }

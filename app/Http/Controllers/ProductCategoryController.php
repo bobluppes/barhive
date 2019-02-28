@@ -17,6 +17,7 @@ class ProductCategoryController extends Controller
         $oCategory = new ProductCategory;
         $oCategory->sName = $validatedData['name'];
         $oCategory->sMakeOrder = $validatedData['makeOrder'];
+        $oCategory->bActive = (bool) $oRequest->active;
         $oCategory->save();
 
         return redirect('/inventory');
@@ -32,6 +33,7 @@ class ProductCategoryController extends Controller
         $oCategory = ProductCategory::where('id', $id)->first();
         $oCategory->sName = $validatedData['name'];
         $oCategory->sMakeOrder = $validatedData['makeOrder'];
+        $oCategory->bActive = (bool) $oRequest->active;
         $oCategory->save();
 
         flash('Category ' . $oCategory->sName . ' saved')->success();
