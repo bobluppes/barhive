@@ -22,6 +22,21 @@ class ProductCategoryController extends Controller
         return redirect('/inventory');
     }
 
+    public function edit(Request $oRequest, $id)
+    {
+        $validatedData = $oRequest->validate([
+            'name' => 'required|string|max:255',
+            'makeOrder'=> 'required|string|max:255',
+        ]);
+
+        $oCategory = ProductCategory::where('id', $id)->first();
+        $oCategory->sName = $validatedData['name'];
+        $oCategory->sMakeOrder = $validatedData['makeOrder'];
+        $oCategory->save();
+
+        return redirect('/inventory');
+    }
+
     public function delete($id)
     {
         $oCategory = ProductCategory::where('id', $id);

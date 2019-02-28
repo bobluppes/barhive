@@ -1,5 +1,5 @@
 {{-- Store category into session --}}
-<? session(['bNewCat' => true]); ?>
+<? session(['cat' => $oCategory->id]); ?>
 
 @extends('layouts.dashboard')
 
@@ -14,22 +14,22 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        {!! Form::open(array('url' => 'inventory/category')) !!}
+                        {!! Form::open(array('url' => 'inventory/category/' . $oCategory->id . '/edit')) !!}
                         {!! Form::token() !!}
 
                         <div class="form-group row">
                             {!! Form::label('name', 'Category name', array('class' => 'col-2 col-form-label')) !!}
                             <div class="col-10">
-                                {!! Form::text('name', '', array('class' => 'form-control')) !!}
+                                {!! Form::text('name', $oCategory->sName, array('class' => 'form-control')) !!}
                             </div>
                         </div>
 
                         <div class="form-group row">
                             {!! Form::label('makeOrder', 'Make Order', array('class' => 'col-2 col-form-label')) !!}
                             <div class="col-10">
-                                {!! Form::radio('makeOrder', 'none', true) !!} None<br>
-                                {!! Form::radio('makeOrder', 'Bar', false) !!} Bar<br>
-                                {!! Form::radio('makeOrder', 'Kitchen', false) !!} Kitchen<br>
+                                {!! Form::radio('makeOrder', 'none', ($oCategory->sMakeOrder == 'none') ? true : false) !!} None<br>
+                                {!! Form::radio('makeOrder', 'Bar', ($oCategory->sMakeOrder == 'Bar') ? true : false) !!} Bar<br>
+                                {!! Form::radio('makeOrder', 'Kitchen', ($oCategory->sMakeOrder == 'Kitchen') ? true : false) !!} Kitchen<br>
                             </div>
                         </div>
 

@@ -39,7 +39,18 @@ class HomeController extends Controller
         $oCategories = ProductCategory::all();
         $oProducts = Product::all();
 
-        return view('inventory.overview', ['oCategories' => $oCategories, 'oProducts' => $oProducts]);
+        $bNewCat = session('bNewCat', false);
+        session(['bNewCat' => false]);
+        if ($bNewCat) {
+            $iActiveCat = ProductCategory::orderBy('id', 'DESC')->first()->id;
+        } else {
+            $iActiveCat = session('cat', null);
+            session(['cat' => null]);
+        }
+
+
+
+        return view('inventory.overview', ['oCategories' => $oCategories, 'oProducts' => $oProducts, 'iActiveCat' => $iActiveCat]);
     }
 
     public function category()
@@ -62,6 +73,12 @@ class HomeController extends Controller
         $oInventory = Inventory::where('iProductId', $id)->first();
 
         return view('inventory.editProduct', ['oCategory' => $oCategory, 'oProduct' => $oProduct, 'oInventory' => $oInventory]);
+    }
+
+    public function editCategory($id)
+    {
+        $oCategory = ProductCategory::where('id', $id)->first();
+        return view('inventory.editCategory', ['oCategory' => $oCategory]);
     }
 
     public function posTable()

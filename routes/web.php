@@ -23,7 +23,6 @@ Route::get('/inventory', 'HomeController@inventory');
 Route::get('/inventory/category', 'HomeController@category');
 Route::get('/inventory/category/{id}/product', 'HomeController@addProduct');
 Route::get('/inventory/product/{id}/edit', 'HomeController@editProduct');
-Route::post('/inventory/product/{id}/edit', 'ProductController@update');
 
 Route::get('/pos', 'HomeController@posTable');
 Route::get('/pos/{iTable}', 'HomeController@pos');
@@ -33,10 +32,13 @@ Route::get('/pos/{iTable}/pay', 'HomeController@posPay');
 Route::post('/pos/product', 'OrderController@order');
 
 Route::post('/inventory/category', 'ProductCategoryController@add');
+Route::get('/inventory/category/{id}/edit', 'HomeController@editCategory');
+Route::post('/inventory/category/{id}/edit', 'ProductCategoryController@edit');
 Route::get('/inventory/category/{id}/delete', 'ProductCategoryController@delete');
 
-Route::post('/inventory/product', 'ProductController@add');
+Route::post('/inventory/product/{id}/edit', 'ProductController@update');
 Route::get('/inventory/product/{id}/delete', 'ProductController@delete');
+Route::post('/inventory/product', 'ProductController@add');
 
 Route::get('tickets/kitchen', 'HomeController@kitchen');
 Route::get('tickets/bar', 'HomeController@bar');
