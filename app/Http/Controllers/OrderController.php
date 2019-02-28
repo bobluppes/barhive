@@ -32,15 +32,6 @@ class OrderController extends Controller
         $oProduct = Product::where('id', $id)->first();
         $oCategory = ProductCategory::where('id', $oProduct->iCategoryId)->first();
 
-        if ($oCategory->sMakeOrder != 'none') {
-            $oTicket = new Ticket();
-            $oTicket->iTable = $iTable;
-            $oTicket->sName = $oProduct->sName;
-            $oTicket->sComment = $orderComment;
-            $oTicket->sDepartment = $oCategory->sMakeOrder;
-            $oTicket->save();
-        }
-
         // Change table status if needed
         $oTable = Table::where('iTableId', $iTable)->first();
         $status = $oTable->sCurrentStatus;
@@ -62,6 +53,16 @@ class OrderController extends Controller
         $oSale->iTable = $iTable;
         $oSale->iBillId = $oBill->id;
         $oSale->save();
+
+        if ($oCategory->sMakeOrder != 'none') {
+            $oTicket = new Ticket();
+            $oTicket->iTable = $iTable;
+            $oTicket->iSaleId = $oSale->id;
+            $oTicket->sName = $oProduct->sName;
+            $oTicket->sComment = $orderComment;
+            $oTicket->sDepartment = $oCategory->sMakeOrder;
+            $oTicket->save();
+        }
 
         DB::table('product_sales_count')->where('iProductId', $id)->increment('count');
 

@@ -40,6 +40,7 @@ class BillController
             $oInventory->iInventory++;
             $oInventory->save();
             // Delete sale
+            $oSale->ticket->delete();
             $oSale->delete();
         }
 

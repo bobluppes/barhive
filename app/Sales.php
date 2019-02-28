@@ -21,4 +21,8 @@ class Sales extends Model
     public function bill() {
         return $this->belongsTo('App\Bill', 'iBillId');
     }
+
+    public function ticket() {
+        return $this->hasOne('App\Ticket', 'iSaleId');
+    }
 }

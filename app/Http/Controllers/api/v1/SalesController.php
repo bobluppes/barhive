@@ -90,6 +90,7 @@ class SalesController
         $oSale = Sales::where('id', $id)->first();
         $iProductId = $oSale->iProductId;
 
+        $oSale->ticket->delete();
         $oSale->delete();
 
         // Decrease sales counter
