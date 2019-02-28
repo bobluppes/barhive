@@ -11,7 +11,7 @@
 @section('content')
     <div class="row">
 
-        {!! Form::open(array('url' => 'inventory/product')) !!}
+        {!! Form::open(array('url' => 'inventory/product', 'id' => 'editForm')) !!}
         {!! Form::token() !!}
 
         <div class="col-md-8">
@@ -79,40 +79,34 @@
 
     <div class="row">
         <div class="col-md-12">
-                {!! Form::number('catId', $oCategory->id, array('hidden' => true)) !!}
+            {!! Form::number('catId', $oCategory->id, array('hidden' => true)) !!}
+            {!! Form::number('next', 0, array('hidden' => true)) !!}
 
-                {!! Form::submit('Save', array('class' => 'btn btn-block btn-outline btn-primary')) !!}
+            <div class="row">
+                <div class="col-md-8">
+                    {!! Form::submit('Save', array('class' => 'btn btn-block btn-primary')) !!}
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-block btn-warning" onclick="saveNext(event);">Save and Next</button>
+                </div>
+            </div>
 
-                {!! Form::close() !!}
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection
 
-@section('contentold')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h1>
+@section('scripts')
+    <script>
+        window.onload = function() {
+            saveNext = function(e) {
+                e.preventDefault();
 
-                        </h1>
-                    </div>
-                    <div class="card-body">
-
-
-
-
-                        <input type="button" data-toggle="collapse" data-target="#extraOptions" value="Extra options" class="btn btn-secondary form-group form-control">
-
-                        <div id="extraOptions" class="collapse">
-
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                var form = $('#editForm');
+                var next = document.getElementsByName('next')[0];
+                next.value = 1;
+                form.submit();
+            }
+        }
+    </script>
 @endsection

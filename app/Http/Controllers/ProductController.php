@@ -18,6 +18,7 @@ class ProductController extends Controller
             'catId' => 'required|int',
             'inventory' => 'int',
             'minimumInventory' => 'int',
+            'next' => 'int',
         ]);
 
         $oProduct = new Product();
@@ -40,7 +41,11 @@ class ProductController extends Controller
             'count' => 0,
         ]);
 
-        return redirect('/inventory');
+        if ($validatedData['next'] == 1) {
+            return redirect('/inventory/category/' . $oProduct->iCategoryId . '/product');
+        } else {
+            return redirect('/inventory');
+        }
     }
 
     public function delete($id)
