@@ -11,6 +11,8 @@ namespace App\Http\Controllers\api\v1;
 
 use App\Bill;
 use App\Table;
+use App\Inventory;
+use Illuminate\Support\Facades\DB;
 
 class BillController
 {
@@ -31,6 +33,13 @@ class BillController
         $oBill = Bill::where('id', $id)->first();
         $oSales = $oBill->sales;
         foreach ($oSales as $oSale) {
+            // Decrease sales counter
+            DB::table('product_sales_count')->where('iProductId', $oSale->iProductId)->decrement('count');
+            // Increase inventory
+            $oInventory = Inventory::where('iProductId', $oSale->iProductId)->first();
+            $oInventory->iInventory++;
+            $oInventory->save();
+            // Delete sale
             $oSale->delete();
         }
 

@@ -65,7 +65,7 @@ class OrderController extends Controller
 
         DB::table('product_sales_count')->where('iProductId', $id)->increment('count');
 
-        flash('Ordered ' . $oProduct->sName)->success();
+        flash('Ordered ' . $oProduct->sName . "<a style='cursor: pointer;'><span class='pull-right' onclick='undoSale(" . $oSale->id . ");'>undo</span></a>")->success();
 
         return redirect('/pos/' . $iTable . '/cat/' . $oProduct->iCategoryId);
     }

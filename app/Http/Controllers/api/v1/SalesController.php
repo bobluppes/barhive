@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers\api\v1;
 
+use App\Inventory;
 use App\Sales;
 use Illuminate\Support\Facades\DB;
 
@@ -93,5 +94,9 @@ class SalesController
 
         // Decrease sales counter
         DB::table('product_sales_count')->where('iProductId', $iProductId)->decrement('count');
+        // Increment inventory
+        $oInventory = Inventory::where('iProductId', $iProductId)->first();
+        $oInventory->iInventory++;
+        $oInventory->save();
     }
 }

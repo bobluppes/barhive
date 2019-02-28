@@ -41,6 +41,14 @@
 
 <body>
 
+<div class="container" style="position: absolute;top: 10px;left: 0px;right: 0px;z-index: 10;">
+    <div class="row">
+        <div class="col-md-12" style="display: none;">
+            @include('flash::message')
+        </div>
+    </div>
+</div>
+
 @yield('content')
 
 
@@ -56,15 +64,20 @@
 <script src="{{ asset('js/metisMenu.js') }}"></script>
 
 <!-- Morris Charts JavaScript -->
-<script src="{{ asset('js/raphael.js') }}"></script>
-<script src="{{ asset('js/morris.js') }}"></script>
-<script src="{{ asset('js/morris-data.js') }}"></script>
+{{--<script src="{{ asset('js/raphael.js') }}"></script>--}}
+{{--<script src="{{ asset('js/morris.js') }}"></script>--}}
+{{--<script src="{{ asset('js/morris-data.js') }}"></script>--}}
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset('js/sb-admin-2.js') }}"></script>
 <script src="{{ asset('js/Page.js') }}"></script>
 
+<script src="/js/vue.min.js"></script>
+<script src="/js/vue-resource.min.js"></script>
+
 @yield('scripts')
+
+<script src="{{ asset('js/layouts/fullscreen.js') }}"></script>
 
 </body>
 

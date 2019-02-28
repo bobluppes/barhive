@@ -81,8 +81,5 @@
 @endsection
 
 @section('scripts')
-    <script src="/js/vue.min.js"></script>
-    <script src="/js/vue-resource.min.js"></script>
-
     <script src="{{ asset('js/pos/pay.js') }}"></script>
 @endsection
