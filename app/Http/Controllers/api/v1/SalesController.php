@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\api\v1;
 
 use App\Sales;
+use Illuminate\Support\Facades\DB;
 
 class SalesController
 {
@@ -86,6 +87,11 @@ class SalesController
     public function delete($id)
     {
         $oSale = Sales::where('id', $id)->first();
+        $iProductId = $oSale->iProductId;
+
         $oSale->delete();
+
+        // Decrease sales counter
+        DB::table('product_sales_count')->where('iProductId', $iProductId)->decrement('count');
     }
 }
