@@ -27,6 +27,11 @@ class Product extends Model
         return $this->hasOne('App\Inventory', 'iProductId');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\ProductCategory', 'iCategoryId');
+    }
+
     public function getMinimumInventory()
     {
         $oInventory = Inventory::where('iProductId', $this->id)->first();

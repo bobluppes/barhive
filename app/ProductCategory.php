@@ -22,4 +22,9 @@ class ProductCategory extends Model
         $result = $oProducts->count() > 0;
         return $result;
     }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product', 'iCategoryId');
+    }
 }

@@ -40,7 +40,9 @@ class BillController
             $oInventory->iInventory++;
             $oInventory->save();
             // Delete sale
-            $oSale->ticket->delete();
+            if ($oSale->getProduct()->category->sMakeOrder != 'none') {
+                $oSale->ticket->delete();
+            }
             $oSale->delete();
         }
 

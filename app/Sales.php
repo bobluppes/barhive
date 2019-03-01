@@ -13,7 +13,7 @@ class Sales extends Model
     ];
 
     public function getProduct() {
-        $oProduct = Product::where('id', this.iProductId)->first();
+        $oProduct = Product::where('id', $this->iProductId)->first();
 
         return $oProduct;
     }

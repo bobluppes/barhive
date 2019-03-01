@@ -93,7 +93,11 @@ class HomeController extends Controller
 
     public function pos($iTable)
     {
-        $oCategories = ProductCategory::where('bActive', 1)->get();
+        $oCategories = ProductCategory::whereHas('products')->whereHas('products', function($query) {
+            $query->where('bActive', 1)->whereHas('inventory', function($query) {
+                $query->where('iInventory', '>', 0);
+            });
+        })->where('bActive', 1)->get();
         $oTable = Table::where('iTableId', $iTable)->first();
         $bDontOrderOnTable = Setting::where('setting', 'dontOrderOnTable')->first()->value;
 

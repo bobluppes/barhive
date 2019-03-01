@@ -73,6 +73,16 @@ class OrderController extends Controller
 
         flash('Ordered ' . $oProduct->sName . "<a style='cursor: pointer;'><span class='pull-right' onclick='undoSale(" . $oSale->id . ");'>undo</span></a>")->success();
 
+        // Return to cat select is category is now empty
+        $oCat = ProductCategory::where('id', $oCategory->id)->whereHas('products')->whereHas('products', function($query) {
+            $query->where('bActive', 1)->whereHas('inventory', function($query) {
+                $query->where('iInventory', '>', 0);
+            });
+        })->where('bActive', 1);
+        if ($oCat->count() == 0) {
+            return redirect('/pos/' . $iTable);
+        }
+
         return redirect('/pos/' . $iTable . '/cat/' . $oProduct->iCategoryId);
     }
 }
