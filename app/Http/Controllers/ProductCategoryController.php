@@ -42,7 +42,11 @@ class ProductCategoryController extends Controller
 
     public function delete($id)
     {
-        $oCategory = ProductCategory::where('id', $id);
+        $oCategory = ProductCategory::where('id', $id)->first();
+        $oProducts = $oCategory->products()->get();
+        foreach ($oProducts as $oProduct) {
+            $oProduct->delete();
+        }
         $oCategory->delete();
 
         return redirect('/inventory');
