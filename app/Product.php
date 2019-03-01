@@ -22,6 +22,11 @@ class Product extends Model
         return $oInventory->iInventory;
     }
 
+    public function inventory()
+    {
+        return $this->hasOne('App\Inventory', 'iProductId');
+    }
+
     public function getMinimumInventory()
     {
         $oInventory = Inventory::where('iProductId', $this->id)->first();

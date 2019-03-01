@@ -25,12 +25,17 @@ class OrderController extends Controller
         $iTable = $oRequest->table;
         $orderComment = (string) $oRequest->orderComment;
 
-        $oInventory = Inventory::where('iProductId', $id)->first();
-        $oInventory->iInventory--;
-        $oInventory->save();
-
         $oProduct = Product::where('id', $id)->first();
         $oCategory = ProductCategory::where('id', $oProduct->iCategoryId)->first();
+
+        // Check if product has enough inventory
+        $oInventory = Inventory::where('iProductId', $id)->first();
+        if ($oInventory->iInventory <= 0) {
+            flash($oProduct->sName . ' out of stock')->error();
+            return redirect('/pos/' . $iTable . '/cat/' . $oProduct->iCategoryId);
+        }
+        $oInventory->iInventory--;
+        $oInventory->save();
 
         // Change table status if needed
         $oTable = Table::where('iTableId', $iTable)->first();

@@ -11,4 +11,9 @@ class Inventory extends Model
         'iInventory',
         'iMinimumInventory',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo('App\Product', 'iProductId');
+    }
 }
