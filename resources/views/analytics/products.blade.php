@@ -36,5 +36,8 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/vue.min.js') }}"></script>
+    <script src="{{ asset('js/vue-resource.min.js') }}"></script>
+
     <script src="{{ asset('js/analytics/products.js') }}"></script>
 @endsection

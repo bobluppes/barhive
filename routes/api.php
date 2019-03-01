@@ -48,3 +48,5 @@ Route::post('/bill/{id}/pay', 'api\v1\BillController@pay');
 Route::post('/bill/{id}/delete', 'api\v1\BillController@delete');
 
 Route::post('/settings/set', 'api\v1\SettingsController@set');
+
+Route::get('/products/sales', 'api\v1\ProductController@getSales');
