@@ -34,13 +34,22 @@ class TableController
             'new' => 'required|int',
         ]);
 
-        $oTable = Table::where('iTableId', $validatedData['old'])->first();
-        $oTable->iSaved = -1;
-        $oTable->save();
+        // Check if there already is a rename waiting to be saved
+        $oTableRename = Table::where('iTableId', $validatedData['old'])->where('iSaved', 0);
+        if ($oTableRename->count() > 0) {
+            $oTable = $oTableRename->first();
+            $sOldStatus = $oTable->sCurrentStatus;
+        } else {
+            $oTable = Table::where('iTableId', $validatedData['old'])->first();
+            $oTable->iSaved = -1;
+            $sOldStatus = $oTable->sCurrentStatus;
+            $oTable->save();
 
-        $oTable = new Table();
+            $oTable = new Table();
+        }
+
         $oTable->iTableId = $validatedData['new'];
-        $oTable->sCurrentStatus = 'empty';
+        $oTable->sCurrentStatus = $sOldStatus;
         $oTable->iSaved = 0;
         $oTable->save();
     }
