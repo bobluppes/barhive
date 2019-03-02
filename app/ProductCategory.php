@@ -27,4 +27,9 @@ class ProductCategory extends Model
     {
         return $this->hasMany('App\Product', 'iCategoryId');
     }
+
+    public function vat()
+    {
+        return $this->belongsTo('App\Vat', 'iVatId');
+    }
 }

@@ -31,5 +31,13 @@ class DatabaseSeeder extends Seeder
             'setting' => 'curr',
             'value' => 0,
         ]);
+
+        DB::table('vats')->insert([
+            'tax' => 0.09,
+        ]);
+        DB::table('vats')->insert([
+            'tax' => 0.21,
+        ]);
+
     }
 }

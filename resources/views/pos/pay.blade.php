@@ -26,7 +26,24 @@
             <div class="col-md-2"></div>
         </div>
 
+        <?
+        $fNoVat = 0;
+        $fVatHigh = 0;
+        $fVatLow = 0;
+        $fTotal = 0;
+        ?>
+
         @foreach ($oSales as $oSale)
+            <?
+                $oVat = $oSale->getProduct()->category->vat;
+                $fNoVat += round(($oSale->fPrice * (1 - $oVat->tax)), 2);
+                if ($oVat->id == 2) {
+                    $fVatHigh += round($oSale->fPrice * $oVat->tax, 2);
+                } else if ($oVat->id == 1) {
+                    $fVatLow += round($oSale->fPrice * $oVat->tax, 2);
+                }
+                $fTotal += $oSale->fPrice;
+            ?>
             <div class="row" id="saleRow-{{ $oSale->id }}">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
@@ -50,19 +67,19 @@
             <div class="col-md-6">
                 <div class="container">
                     <div class="row">
-                        Total excl. tax:
+                        Total excl. tax: {{ $fNoVat }}
                     </div>
                     <div class="row">
-                        Tax high:
+                        Tax high: {{ $fVatHigh }}
                     </div>
                     <div class="row">
-                        Tax low:
+                        Tax low: {{ $fVatLow }}
                     </div>
                     <div class="row">
                         &nbsp
                     </div>
                     <div class="row">
-                        Total:
+                        Total: {{ $fTotal }}
                     </div>
                 </div>
             </div>

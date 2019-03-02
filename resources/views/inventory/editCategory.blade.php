@@ -46,6 +46,15 @@
                             {!! Form::checkbox('active', 'active', ($oCategory->bActive == 1) ? true : false, array('class' => '')) !!}
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            {!! Form::label('vat', 'VAT', array('class' => 'col-2 col-form-label')) !!}
+                        </div>
+                        <div class="col-md-6">
+                            {!! Form::select('vat', $aVats, $oCategory->vat->id) !!}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

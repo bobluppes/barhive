@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group row">
-                    {!! Form::label('price', 'Price', array('class' => 'col-2 col-form-label')) !!}
+                    {!! Form::label('price', 'Price (incl. VAT)', array('class' => 'col-2 col-form-label')) !!}
                     <div class="col-10">
                         {!! Form::text('price', '', array('class' => 'form-control')) !!}
                     </div>

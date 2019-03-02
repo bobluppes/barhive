@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Sales;
 use App\Setting;
 use App\Table;
+use App\Vat;
 use Hamcrest\Core\Set;
 use Illuminate\Http\Request;
 use App\ProductCategory;
@@ -55,7 +56,13 @@ class HomeController extends Controller
 
     public function category()
     {
-        return view('inventory.addCategory');
+        $oVats = Vat::all();
+        $aVats = [];
+        foreach ($oVats as $oVat) {
+            $aVats[$oVat->id] = $oVat->tax;
+        }
+
+        return view('inventory.addCategory', ['aVats' => $aVats]);
     }
 
     public function addProduct($id)
@@ -77,8 +84,13 @@ class HomeController extends Controller
 
     public function editCategory($id)
     {
+        $oVats = Vat::all();
+        $aVats = [];
+        foreach ($oVats as $oVat) {
+            $aVats[$oVat->id] = $oVat->tax;
+        }
         $oCategory = ProductCategory::where('id', $id)->first();
-        return view('inventory.editCategory', ['oCategory' => $oCategory]);
+        return view('inventory.editCategory', ['oCategory' => $oCategory, 'aVats' => $aVats]);
     }
 
     public function posTable()
