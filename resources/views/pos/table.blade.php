@@ -52,6 +52,7 @@
 <script>
 
     var stage;
+    var floorLayer;
     var layer;
     var needSave = 0;
 
@@ -61,7 +62,9 @@
 
         drawLayout = function(layout) {
             this.stage = Konva.Node.create(JSON.parse(layout.json), 'container');
+            this.floorLayer = this.stage.find('#floor')[0];
             this.layer = this.stage.find('#main')[0];
+            this.floorLayer.draw();
             this.layer.draw();
 
             let tables = this.layer.getChildren();
@@ -94,7 +97,12 @@
                     }
                 });
 
-            })
+            });
+
+            let floors = this.floorLayer.getChildren();
+            floors.each(function(floor) {
+                floor.setAttr('draggable', false);
+            });
         }
 
         Vue.http.get('/settings/table/poslayout').then(response => {

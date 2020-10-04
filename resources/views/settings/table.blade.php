@@ -8,7 +8,8 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
-    <script src="https://unpkg.com/konva@2.4.2/konva.min.js"></script>
+    {{-- <script src="https://unpkg.com/konva@2.4.2/konva.min.js"></script> --}}
+    <script src="https://unpkg.com/konva@7.1.3/konva.min.js"></script>
     <script src="/js/vue.min.js"></script>
     <script src="/js/vue-resource.min.js"></script>
 
@@ -48,12 +49,16 @@
     <br><button id="addRound" class="btn btn-success">
         Add round table
     </button>
+    <br><button id="addFloor" class="btn btn-secondary">
+        Add floor
+    </button>
 </div>
 
 
 <script>
 
     var stage;
+    var floorLayer;
     var layer;
     var rectX;
     var rectY;
@@ -109,10 +114,14 @@
             let shape = this.deleteLayer.getIntersection(pos);
             if (shape) {
                 if (shape.getAttr('id') == 'delete') {
-                    var tableId = group.find('.text')[0].getAttr('text');
-                    group.destroy();
-                    Vue.http.post('/api/table/delete', {table: tableId}).then(response => {
+                    var table = group.find('.text')[0];
+                    if (table) {
+                        var tableId = table.getAttr('text');
+                        Vue.http.post('/api/table/delete', {table: tableId}).then(response => {
                     });
+                    }
+                    group.destroy();
+                    this.floorLayer.draw();
                     this.layer.draw();
                 }
             }
@@ -153,18 +162,38 @@
                });
                this.counter = 1;
 
+               this.floorLayer = new Konva.Layer({
+                   id: 'floor',
+               });
                this.layer = new Konva.Layer({
                    id: 'main',
                });
                this.rectX = this.stage.getWidth() / 2 - 50;
                this.rectY = this.stage.getHeight() / 2 - 25;
 
+               this.stage.add(floorLayer);
                this.stage.add(layer);
            } else {
                this.stage = Konva.Node.create(JSON.parse(layout.json), 'container');
                this.stage.setWidth(window.innerWidth);
                this.stage.setHeight(window.innerHeight);
+               this.floorLayer = this.stage.find('#floor')[0];
                this.layer = this.stage.find('#main')[0];
+
+               this.floorLayer.getChildren().each(function (group) {
+                   group.on('mouseover', function() {
+                       document.body.style.cursor = 'pointer';
+                   });
+                   group.on('mouseout', function() {
+                       document.body.style.cursor = 'default';
+                   });
+                   group.on('dragstart', function() {
+                       drawDeleteArea();
+                   });
+                   group.on('dragend', function() {
+                       removeDeleteArea(group);
+                   });
+               });
 
                this.layer.getChildren().each(function (group) {
                    group.on('mouseover', function() {
@@ -295,6 +324,46 @@
         layer.draw();
 
         counter++;
+    }, false);
+
+    document.getElementById('addFloor').addEventListener('click', function() {
+        let box = new Konva.Rect({
+            x: rectX,
+            y: rectY,
+            width: 100,
+            height: 50,
+            fill: '#bffdff',
+            strokeWidth: 0,
+            name: 'floor',
+        });
+
+        let group = new Konva.Group({
+            draggable: true,
+        });
+
+        // add cursor styling
+        group.on('mouseover', function() {
+            document.body.style.cursor = 'pointer';
+        });
+        group.on('mouseout', function() {
+            document.body.style.cursor = 'default';
+        });
+        group.on('dragstart', function() {
+            drawDeleteArea();
+        });
+        group.on('dragend', function() {
+            removeDeleteArea(group);
+        });
+
+        group.add(box);
+        floorLayer.add(group);
+
+        var tr = new Konva.Transformer();
+        floorLayer.add(tr);
+        tr.nodes([group]);
+
+        floorLayer.draw();
+
     }, false);
 
     document.getElementById('save').addEventListener('click', function() {
