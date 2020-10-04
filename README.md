@@ -44,8 +44,17 @@ php artisan db:seed
 php artisan serve
 ```
 
+## Support
+For any support with Barhive, you can open an issue on the issue tracker or reach out to me on my github email!
+
+## Roadmap
+* Receipt system
+* Payment gateway
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Preferably, pull requests are related to features in the roadmap above or issues in the issue tracker. If a feature on the roadmap has a project board associated, it is added behind the feature in parentheses. See these pages for more information about the planned feature.
 
 Please make sure to update tests as appropriate.
 
