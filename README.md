@@ -16,6 +16,7 @@ cd ./barhive
 
 # Install dependencies
 composer install
+composer update
 npm install
 
 # Build sources
