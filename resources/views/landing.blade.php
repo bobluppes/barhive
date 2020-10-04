@@ -85,7 +85,7 @@
         </div>
 
         <div class="links">
-            <a href="https:///www.barhive.nl">About</a>
+            <a href="https://bobluppes.github.io/barhive/">About</a>
         </div>
     </div>
 </div>
