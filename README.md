@@ -6,7 +6,7 @@ The aim of the project is to enable business owners all over the world to digiti
 
 ## Requirements
 
-Barhive is an Open Source Project built in Larvel. So the requirements would be the following
+Barhive is an Open Source Project built in Larvel. So the requirements are the following
 
 - [Composer](https://getcomposer.org/download/)
 - [Larvel](https://packagist.org/packages/laravel/framework)
