@@ -11,8 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
+Route::get('/{landing?}', function (int $landing = 0) {
+	if ($landing == 0) {
+		return view('landing.example');
+	} else {
+		return view('landing.' . $landing);
+	}
 });
 
 Auth::routes();
