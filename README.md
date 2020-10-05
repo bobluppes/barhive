@@ -4,6 +4,16 @@ Barhive is an open source project that implements a simple to use distributed po
 
 The aim of the project is to enable business owners all over the world to digitize their bussiness without the upfront investment.
 
+## Requirements
+
+Barhive is an Open Source Project built in Larvel. So the requirements are the following
+
+- [Composer](https://getcomposer.org/download/)
+- [Larvel](https://packagist.org/packages/laravel/framework)
+- [NPM](https://docs.npmjs.com/cli/install)
+
+It is also necessary to have MySql data base 
+- [ MySql](https://www.mysql.com/downloads/)
 ## Installation
 
 The application is installed like any other Laravel application. It requires composer and npm to be installed.
