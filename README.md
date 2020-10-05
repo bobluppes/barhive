@@ -4,16 +4,17 @@ Barhive is an open source project that implements a simple to use distributed po
 
 The aim of the project is to enable business owners all over the world to digitize their bussiness without the upfront investment.
 
+## Hacktober
+Our current goal is to finish the beta version by the end of October. There are a number of small bugs and two features in the roadmap that need to be fixed/implemented to reach this goal. If you want to contribute to an open source project, feel free to look at the contributing section for more details!
+
 ## Requirements
 
-Barhive is an Open Source Project built in Larvel. So the requirements are the following
+Barhive is built in Laravel requires the following to run locally:
 
 - [Composer](https://getcomposer.org/download/)
-- [Larvel](https://packagist.org/packages/laravel/framework)
 - [NPM](https://docs.npmjs.com/cli/install)
+- [MySql](https://www.mysql.com/downloads/)
 
-It is also necessary to have MySql data base 
-- [ MySql](https://www.mysql.com/downloads/)
 ## Installation
 
 The application is installed like any other Laravel application. It requires composer and npm to be installed.
@@ -33,7 +34,7 @@ npm install
 npm run dev
 ```
 
-Next, the environment variables need to be set. An example configuration can be found in `barhive/.env.example`, you can simply copy this file to `barhive/.env` and edit the variables accordingly. The most important settings are the database settings:
+Next, the environment variables need to be set. An example configuration can be found in `barhive/.env.example`, you can simply copy this file to `barhive/.env` and edit the variables accordingly. The most important settings are the database settings. You will need to create an empty database on your local MySql installation and provide it's name and login credentials to the .env file:
 
 ```
 DB_DATABASE=[your_database_name]
